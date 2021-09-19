@@ -1,4 +1,3 @@
-
 <?php
 print_r($_FILES)."<br />";
 /*
@@ -34,3 +33,4 @@ echo dirname(__FILE__)."<br />";
  // La función dirname (ruta) devuelve la parte del directorio de la ruta. El parámetro de ruta es una cadena que contiene la ruta completa a un archivo. Esta función devuelve el nombre del directorio después de eliminar el nombre del archivo.
 echo dirname(dirname(__FILE__))."<br />";
 //D:\Program Files (x86)\Apache Software Foundation\PHPWorkspace\Test
+?>
