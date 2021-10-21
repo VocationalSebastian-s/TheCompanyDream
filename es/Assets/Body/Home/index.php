@@ -9,7 +9,7 @@
         </style>
     </head>
     <body>
-        <?php include('../assets/head/header.html') ?>
+        <?php include('../Assets/head/header.html') ?>
         <section>
 
         </section>

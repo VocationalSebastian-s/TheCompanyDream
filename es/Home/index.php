@@ -2,13 +2,13 @@
 <html>
     <head>
         <!---Default-->
-        <?php include('../assets/default/index.html') ?>
+        <?php include('../Assets/default/index.html') ?>
         <!---Stylesheet-->
-        <link rel="stylesheet" href="../assets/default/style.css">
-        <link rel="stylesheet" href="../assets/header/style.css">
+        <link rel="stylesheet" href="../Assets/default/style.css">
+        <link rel="stylesheet" href="../Assets/header/style.css">
     </head>
     <body>
         <!---Header-->
-        <?php include('../assets/header/index.html') ?>
+        <?php include('../Assets/header/index.html') ?>
     </body>
 </html>

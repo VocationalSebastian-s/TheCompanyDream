@@ -100,10 +100,10 @@
 <html>
     <head>
         <!---Default-->
-        <?php include('../assets/default/index.html') ?>
+        <?php include('../Assets/default/index.html') ?>
         <!---Stylesheet-->
-        <link rel="stylesheet" href="../assets/default/style.css">
-        <link rel="stylesheet" href="../assets/body/Login/style.css">
+        <link rel="stylesheet" href="../Assets/Default/style.css">
+        <link rel="stylesheet" href="../Assets/Body/Login/style.css">
         <style type="text/css">
 
         </style>
