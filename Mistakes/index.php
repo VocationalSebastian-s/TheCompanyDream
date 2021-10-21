@@ -12,7 +12,7 @@
         <meta name="keywords" content="Payroll, Company Dream, The Company Dream">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!---Stylesheet-->
-        <link rel="stylesheet" href="/mistakes/style.css">
+        <link rel="stylesheet" href="/Mistakes/style.css">
     </head>
     <body>
         <header>
