@@ -9,6 +9,6 @@
     </head>
     <body>
         <!---Header-->
-        <?php include('../Assets/Header/index.html') ?> 
+        <?php include('../Assets/Header/index.html') ?>
     </body>
 </html>
