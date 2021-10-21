@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="style.css">
+<div class="initiation">
+    <div class="container">
+        <div class="boxMain">
+            <div class="box signin">
+                <h2>¿Ya tienes una cuenta?</h2>
+                <a onclick="left()" id="btn" class="signinBtn"><span>Iniciar sesión</span></a>
+            </div>
+            <div class="box signup">
+                <h2>¿Aun no tienes una cuenta?</h2>
+                <a onclick="right()" id="btn" class="signupBtn"><span>Inscribirse</span></a>
+            </div>
+            <script type="text/javascript">
+                const btn=document.querySelector('#btn');
+                btn.onmousemove = function(e){
+                    const left=e.pageX - btn.offsetleft;
+                    const top=e.pageY - btn.offsetTop;
+
+                    btn.style.setProperty('--x', left + 'px');
+                    btn.style.setProperty('--y', top + 'px');
+                }
+            </script>
+        </div>
+        <div class="formBx left">
+            <div class="form signinForm">
+                <form action="index.php" method="post">
+                    <h3>Iniciar sesión</h3>
+                    <input type="hidden" name="action" value="signin" required>
+                    <input type="email" name="email" placeholder="Correo" maxlength="120" required>
+                    <input type="password" name="password" placeholder="Contraseña" maxlength="20" required>
+                    <input type="submit" value="Ingresar">
+                    <a href="#" class="forgot">¿Olvidaste Tu Contraseña?</a>
+                </form>
+            </div>
+            <div class="form signupForm">
+                <form action="index.php" method="post">
+                    <h3>Inscribirse</h3>
+                    <input type="hidden" name="action" value="signup" required>
+                    <input type="text" name="name" placeholder="Nombre(s)" maxlength="14" required>
+                    <input type="text" name="lastname" placeholder="Apellido(s)" maxlength="30" required>
+                    <input type="email" name="email" placeholder="Correo" maxlength="120" required>
+                    <input type="password" name="password" placeholder="Contraseña" maxlength="20" required>
+                    <input type="password" name="passwordcheck" placeholder="Verificar Contraseña" maxlength="20" required>
+                    <input type="submit" value="Registrar">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    const formBx=document.querySelector('.formBx');
+
+    function right(){
+        formBx.classList.remove('left');
+        formBx.classList.add('right');
+    }
+
+    function left(){
+        formBx.classList.remove('right');
+        formBx.classList.add('left');
+    }
+</script>
+

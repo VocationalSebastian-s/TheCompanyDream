@@ -1,0 +1,157 @@
+header nav{
+  background: #1A5276 ;
+  font-family: 'Poppins', sans-serif;
+}
+header nav:after{
+  content: '';
+  clear: both;
+  display: table;
+}
+header nav .logo{
+  float: left;
+  color: white;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 70px;
+  padding-left: 60px;
+}
+header nav ul{
+  float: right;
+  margin-right: 40px;
+  list-style: none;
+  position: relative;
+}
+header nav ul li{
+  display: inline-block;
+  background: #1A5276;
+  margin: 0 5px;
+}
+header nav ul li a{
+  color: white;
+  line-height: 70px;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 8px 15px;
+}
+header nav ul li a:hover{
+  color: #fff   ;
+  border-radius: 5px;
+  box-shadow:  0 0 5px #058CFB,
+                0 0 10px #058CFB ;
+}
+header nav ul ul li a:hover{
+  box-shadow: none;
+}
+header nav ul ul{
+  position: absolute;
+  top: 90px;
+  border-top: 3px solid #058CFB;
+  opacity: 0;
+  visibility: hidden;
+  transition: top .3s;
+}
+header nav ul ul ul{
+  border-top: none;
+}
+header nav ul li:hover > ul{
+  top: 70px;
+  opacity: 1;
+  visibility: visible;
+}
+header nav ul ul li{
+  position: relative;
+  margin: 0px;
+  width: 150px;
+  float: none;
+  display: list-item;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+header nav ul ul li a{
+  line-height: 50px;
+}
+header nav ul ul ul li{
+  position: relative;
+  top: -60px;
+  left: 150px;
+}
+header nav .show,.icon,input{
+  display: none;
+}
+.fa-plus{
+  font-size: 15px;
+  margin-left: 40px;
+}
+@media all and (max-width: 968px) {
+  header nav ul{
+    margin-right: 0px;
+    float: left;
+  }
+  header nav .logo{
+    padding-left: 15px;
+    width: 100%;
+  }
+  header nav .show + a, ul{
+    display: none;
+  }
+  header nav ul li,header nav ul ul li{
+    display: block;
+    width: 100%;
+  }
+  header nav ul li a:hover{
+    box-shadow: none;
+  }
+  header nav .show{
+    display: block;
+    color: white;
+    font-size: 18px;
+    padding: 0 20px;
+    line-height: 70px;
+    cursor: pointer;
+  }
+  header nav .show:hover{
+    color: cyan;
+  }
+  header nav .icon{
+    display: block;
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    line-height: 70px;
+    cursor: pointer;
+    font-size: 25px;
+  }
+  header nav ul ul{
+    top: 70px;
+    border-top: 0px;
+    float: none;
+    position: static;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+  }
+  header nav ul ul a{
+    padding-left: 40px;
+  }
+  header nav ul ul ul a{
+    padding-left: 80px;
+  }
+  header nav ul ul ul li{
+    position: static;
+  }
+  [id^=btn]:checked + ul{
+    display: block;
+  }
+  header nav ul ul li{
+    border-bottom: 0px;
+  }
+  span.cancel:before{
+    content: '\f00d';
+  }
+}
+
+@media all and (max-width: 360px) {
+  header nav .logo{
+    font-size:20px;
+  }
+}

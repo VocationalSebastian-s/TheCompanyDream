@@ -1,0 +1,116 @@
+<?php
+    require '../../conexion.php';
+
+    session_start();
+    if (isset($_SESSION['id'])) {
+        header('Location: ../Main');
+    }
+
+    $message = '';
+    $class = '';
+
+    if (!empty($_POST['action'])) {
+        if ($_POST['action'] == 'signin') {
+            signin($conex);
+        } elseif ($_POST['action'] == 'signup') {
+            signup($conex);
+        }
+    }
+
+    function signin($conexion)
+    {
+        if (!empty($_POST['email']) && !empty($_POST['password'])) {
+            $sql = 'SELECT * FROM users WHERE email=:email';
+            $datos = $conexion->prepare($sql);
+            $datos->bindParam(':email', $_POST['email']);
+            if ($datos->execute()) {
+                $results = $datos->fetch(PDO::FETCH_ASSOC); /*Datos almacenado en Array*/
+                if (password_verify($_POST['password'], $results['password'])) {
+                    $_SESSION['id'] = $results['id']; /*Pasar datos a el sistema de seguridad*/
+                    header('Location: ../Main/index.php'); /*Redirigir al Menu Principal */
+                } else {
+                    $message = 'Error, la contraseña es incorrecta';
+                    $class = '';
+                }
+            } else {
+                $message = 'Error, no se pudo encontrar este correo';
+                $class = '';
+            }
+        } else {
+            $message = 'Error, faltan datos para Iniciar sesión';
+            $class = '';
+        }
+    }
+
+    function signup($conexion)
+    {
+        if (!empty($_POST['name']) && !empty($_POST['lastname']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordcheck'])) {
+            if ($_POST['password'] == $_POST['passwordcheck']) {
+                $sql = 'SELECT email FROM users WHERE email = :email';
+                $datos = $conexion->prepare($sql);
+                $datos->bindParam(':email', $_POST['email']);
+
+                if ($datos->execute()) {
+                    try {
+                        $results = $datos->fetch(PDO::FETCH_ASSOC);
+                        if ($results['email'] == $_POST['email']) {
+                            $repeated = true;
+                        } else {
+                            $repeated = false;
+                        }
+                    } catch (Exception) {
+                        $message = 'Error, al verificar existencia de la cuenta';
+                        $class = '';
+                    }
+                } else {
+                    $message = 'Error, al verificar existencia de la cuenta';
+                    $class = '';
+                }
+                if ($repeated == false) {
+                    $sql = 'INSERT INTO users (name,lastname,email,password) values (:name,:lastname,:email,:password)';
+                    $datos = $conexion->prepare($sql);
+                    $datos->bindParam(':name', $_POST['name']);
+                    $datos->bindParam(':lastname', $_POST['lastname']);
+                    $datos->bindParam(':email', $_POST['email']);
+                    $datos->bindParam(':password', password_hash($_POST['password'], PASSWORD_BCRYPT)); /*Cifrar contraseña en hash BCRYPT */
+                    if ($datos->execute()) {
+                        $message = 'La cuenta ha sido creada con exito';
+                        $class = '';
+                        signin($conexion);
+                    } else {
+                        $message = 'Error, la cuenta no se pudo crear';
+                        $class = '';
+                    }
+                } elseif ($repeated == true) {
+                    $message = 'Error, el correo ' . $_POST['email'] . ' ya existe';
+                    $class = '';
+                }
+            } else {
+                $message = 'Error, las contraseñas no coinciden';
+                $class = '';
+            }
+        } else {
+            $message = 'Error, faltan datos para Registrarse';
+            $class = '';
+        }
+    }
+
+?>
+<!DOCTYPE html>
+<html>
+    <head>
+        <!---Default-->
+        <?php include('../assets/default/index.html') ?>
+        <!---Stylesheet-->
+        <link rel="stylesheet" href="../assets/default/style.css">
+        <link rel="stylesheet" href="../assets/body/Login/style.css">
+        <style type="text/css">
+
+        </style>
+    </head>
+
+    <body>
+        <!---Login-->
+        <?php include('../assets/body/Login/index.html') ?>
+    </body>
+</html>
