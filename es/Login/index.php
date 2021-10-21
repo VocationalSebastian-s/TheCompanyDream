@@ -100,7 +100,7 @@
 <html>
     <head>
         <!---Default-->
-        <?php include('../Assets/default/index.html') ?>
+        <?php include('../Assets/Default/index.html') ?>
         <!---Stylesheet-->
         <link rel="stylesheet" href="../Assets/Default/style.css">
         <link rel="stylesheet" href="../Assets/Body/Login/style.css">
@@ -111,6 +111,6 @@
 
     <body>
         <!---Login-->
-        <?php include('../assets/body/Login/index.html') ?>
+        <?php include('../Assets/Body/Login/index.html') ?>
     </body>
 </html>

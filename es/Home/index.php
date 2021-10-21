@@ -4,11 +4,11 @@
         <!---Default-->
         <?php include('../Assets/default/index.html') ?>
         <!---Stylesheet-->
-        <link rel="stylesheet" href="../Assets/default/style.css">
-        <link rel="stylesheet" href="../Assets/header/style.css">
+        <link rel="stylesheet" href="../Assets/Default/style.css">
+        <link rel="stylesheet" href="../Assets/Header/style.css">
     </head>
     <body>
         <!---Header-->
-        <?php include('../Assets/header/index.html') ?>
+        <?php include('../Assets/Header/index.html') ?>
     </body>
 </html>
