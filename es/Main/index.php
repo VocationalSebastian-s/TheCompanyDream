@@ -10,7 +10,7 @@
 	<script>
 		setTimeout(alertFunc, 1000);
 		function alertFunc() {
-		  location.replace("../login");
+		  location.replace("../Login");
 		}
 	</script>
 </body>
