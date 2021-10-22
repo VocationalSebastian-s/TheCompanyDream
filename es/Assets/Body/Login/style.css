@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #03a9f4;
+    background: url(fondo.jpg) center fixed;
     transition: 0.5s;
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
@@ -34,6 +34,7 @@
     display: flex;
     justify-content: center;
     box-shadow: 0 5px 45px rgba(0,0,0,0.15);
+    background-color: rgba(0,0,0,0.8);
 }
 
 .initiation .container .boxMain .box{
@@ -114,7 +115,7 @@
     top: 0;
     width:50%;
     height:100%;
-    background:#fff;
+    background: #a8e0e6;
     z-index: 1000;
     display:flex;
     justify-content: center;
