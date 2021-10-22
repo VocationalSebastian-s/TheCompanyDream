@@ -47,10 +47,12 @@
 }
 
 .initiation .container .boxMain .box.signin{
+    background-color: #59A9FF;
     background: url() center ;
 }
 
 .initiation .container .boxMain .box.signup{
+    background-color: #59A9FF;
     background: url() center ;
 }
 
