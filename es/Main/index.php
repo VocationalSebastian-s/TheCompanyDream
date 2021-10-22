@@ -2,6 +2,9 @@
  require '../../Seguridad.php';
 ?>
 <?php if (!empty($user)): ?>
+<!DOCTYPE html>
+<html>
+</html>
 <?php else: ?>
 
 <!DOCTYPE html><!--html sino ha iniciado sesion-->
