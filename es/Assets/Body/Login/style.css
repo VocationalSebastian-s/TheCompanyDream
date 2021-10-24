@@ -12,6 +12,7 @@
     align-items: center;
     min-height: 100vh;
     background: url(fondo.jpg) center fixed;
+    background-size: 100%;
     transition: 0.5s;
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
