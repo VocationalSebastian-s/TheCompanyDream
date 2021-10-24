@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="style.css">
 <div class="initiation">
     <div class="container">
         <div class="boxMain">
@@ -11,10 +10,10 @@
                 <a onclick="right()" id="btn" class="signupBtn"><span>Inscribirse</span></a>
             </div>
             <script type="text/javascript">
-                const btn=document.querySelector('#btn');
-                btn.onmousemove = function(e){
-                    const left=e.pageX - btn.offsetleft;
-                    const top=e.pageY - btn.offsetTop;
+                const btn = document.querySelector('#btn');
+                btn.onmousemove = function(e) {
+                    const left = e.pageX - btn.offsetleft;
+                    const top = e.pageY - btn.offsetTop;
 
                     btn.style.setProperty('--x', left + 'px');
                     btn.style.setProperty('--y', top + 'px');
@@ -48,16 +47,15 @@
     </div>
 </div>
 <script type="text/javascript">
-    const formBx=document.querySelector('.formBx');
+    const formBx = document.querySelector('.formBx');
 
-    function right(){
+    function right() {
         formBx.classList.remove('left');
         formBx.classList.add('right');
     }
 
-    function left(){
+    function left() {
         formBx.classList.remove('right');
         formBx.classList.add('left');
     }
 </script>
-
