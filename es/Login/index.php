@@ -119,13 +119,13 @@
                     icon:"<?php echo($class) ?>", 
                     title:"<?php echo($class)?>", 
                     text:"<?php echo($message)?>",
-                    time:"4000",
-                    timeProggessBar:True
+                    timer:"4000",
+                    timerProgressBar:"True"
                 });
             </script>
                 <?php if ($class=="success"): ?>
                     <script type="text/javascript">
-                        setTimeout(alertFunc, 6000);
+                        setTimeout(alertFunc, 5000);
                         function alertFunc() {
                             location.replace("../Main");
                         }
