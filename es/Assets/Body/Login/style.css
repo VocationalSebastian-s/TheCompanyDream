@@ -217,3 +217,9 @@
 .initiation .container .formBx .form form .forgot:hover {
     color: #467A84;
 }
+
+@media only screen and (max-width: 1240px) {
+    .initiation {
+        background-size: auto;
+    }
+}
