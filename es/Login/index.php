@@ -27,19 +27,19 @@
                 $results = $datos->fetch(PDO::FETCH_ASSOC); /*Datos almacenado en Array*/
                 if (password_verify($_POST['password'], $results['password'])) {
                     $_SESSION['id'] = $results['id']; /*Pasar datos a el sistema de seguridad*/
-                    $message = 'Se ha iniciado sesión correctamente';
-                    $class = 'success';
+                    $GLOBALS['message'] = 'Se ha iniciado sesión correctamente';
+                    $GLOBALS['class'] = 'success';
                 } else {
-                    $message = 'Error, la contraseña es incorrecta';
-                    $class = 'error';
+                    $GLOBALS['message'] = 'Error, la contraseña es incorrecta';
+                    $GLOBALS['class'] = 'error';
                 }
             } else {
-                $message = 'Error, no se pudo encontrar este correo';
-                $class = 'error';
+                $GLOBALS['message'] = 'Error, no se pudo encontrar este correo';
+                $GLOBALS['class'] = 'error';
             }
         } else {
-            $message = 'Error, faltan datos para Iniciar sesión';
-            $class = 'error';
+            $GLOBALS['message'] = 'Error, faltan datos para Iniciar sesión';
+            $GLOBALS['class'] = 'error';
         }
     }
 
@@ -60,12 +60,12 @@
                             $repeated = false;
                         }
                     } catch (Exception) {
-                        $message = 'Error, al verificar existencia de la cuenta';
-                        $class = 'error';
+                        $GLOBALS['message'] = 'Error, al verificar existencia de la cuenta';
+                        $GLOBALS['class'] = 'error';
                     }
                 } else {
-                    $message = 'Error, al verificar existencia de la cuenta';
-                    $class = 'error';
+                    $GLOBALS['message'] = 'Error, al verificar existencia de la cuenta';
+                    $GLOBALS['class'] = 'error';
                 }
                 if ($repeated == false) {
                     $sql = 'INSERT INTO users (name,lastname,email,password) values (:name,:lastname,:email,:password)';
@@ -76,26 +76,25 @@
                     $datos->bindParam(':password', password_hash($_POST['password'], PASSWORD_BCRYPT)); /*Cifrar contraseña en hash BCRYPT */
                     if ($datos->execute()) {
                         $message = 'La cuenta ha sido creada con exito';
-                        $class = 'success';
+                        $GLOBALS['class'] = 'success';
                         signin($conexion);
                     } else {
-                        $message = 'Error, la cuenta no se pudo crear';
-                        $class = 'error';
+                        $GLOBALS['message'] = 'Error, la cuenta no se pudo crear';
+                        $GLOBALS['class'] = 'error';
                     }
                 } elseif ($repeated == true) {
-                    $message = 'Error, el correo ' . $_POST['email'] . ' ya existe';
-                    $class = 'error';
+                    $GLOBALS['message'] = 'Error, el correo ' . $_POST['email'] . ' ya existe';
+                    $GLOBALS['class'] = 'error';
                 }
             } else {
-                $message = 'Error, las contraseñas no coinciden';
-                $class = 'error';
+                $GLOBALS['message'] = 'Error, las contraseñas no coinciden';
+                $GLOBALS['class'] = 'error';
             }
         } else {
-            $message = 'Error, faltan datos para Registrarse';
-            $class = 'error';
+            $GLOBALS['message'] = 'Error, faltan datos para Registrarse';
+            $GLOBALS['class'] = 'error';
         }
     }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -113,8 +112,17 @@
     <body>
         <?php if (!empty($message)): ?>
             <script type="text/javascript">
-                Sweetalert2.fire({icon:"<?php echo($class) ?>", title:"<?php echo($message)?>"});
+                Sweetalert2.fire({icon:"<?php echo($class) ?>", title:"<?php echo($class)?>",, title:"<?php echo($message)?>"});
             </script>
+                <?php if ($class=="success"): ?>
+                    <script type="text/javascript">
+                        setTimeout(alertFunc, 1000);
+                        function alertFunc() {
+                            location.replace("../Main");
+                        }
+                    </script>
+                <?php endif; ?>
+            
         <?php endif; ?>
         <!---Login-->
         <?php include('../Assets/Body/Login/index.html') ?>
