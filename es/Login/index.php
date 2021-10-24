@@ -126,7 +126,7 @@
                     allowOutsideClick:"True",
                     allowEscapeKey:"True",
                     confirmButtonText:"Aceptar",
-                    confirmButtonColor:"#A8E0E6"
+                    confirmButtonColor:"#1A5276"
                 });
             </script>
                 <?php if ($class=="success"): ?>
