@@ -27,7 +27,6 @@
                 $results = $datos->fetch(PDO::FETCH_ASSOC); /*Datos almacenado en Array*/
                 if (password_verify($_POST['password'], $results['password'])) {
                     $_SESSION['id'] = $results['id']; /*Pasar datos a el sistema de seguridad*/
-                    header('Location: ../Main/index.php'); /*Redirigir al Menu Principal */
                     $message = 'Se ha iniciado sesión correctamente';
                     $class = 'success';
                 } else {
@@ -114,7 +113,7 @@
     <body>
         <?php if (!empty($message)): ?>
             <script type="text/javascript">
-                Sweetalert2.fire({icon:"<?php echo($message) ?>"});
+                Sweetalert2.fire({icon:"<?php echo($class) ?>", title:"<?php echo($message)?>");
             </script>
         <?php endif; ?>
         <!---Login-->
