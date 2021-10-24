@@ -12,21 +12,21 @@
         <meta name="keywords" content="Payroll, Company Dream, The Company Dream">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!---Stylesheet-->
-        <link rel="stylesheet" href="/Mistakes/style.css">
+        <link rel="stylesheet" href="/Assets/Mistakes/style.css">
     </head>
     <body>
         <header>
             <a href="/es/Home">The Company Dream</a>
         </header>
         <div class="banner">
-        <img class="fondo" src="/Mistakes/fondo.jpg">
+        <img class="fondo" src="/Assets/Mistakes/fondo.jpg">
             <div class="textBox">
-                <h2>Error <?php echo($_GET['error']) ?> <img src="/Mistakes/error.png"></h2>
+                <h2>Error <?php echo($_GET['error']) ?> <img src="/Assets/Mistakes/error.png"></h2>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</p>
                 <a href="/es/Home">Regresar</a>
             </div>
             <div class="FondoBx">
-                <img class="fondo" src="/Mistakes/fondo.jpg">
+                <img class="fondo" src="/Assets/Mistakes/fondo.jpg">
             </div>
         </div>
     </body>

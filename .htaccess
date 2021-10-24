@@ -1,8 +1,8 @@
 Options All -Indexes
-ErrorDocument 400 /Mistakes/index.php?error=400
-ErrorDocument 401 /Mistakes/index.php?error=401
-ErrorDocument 402 /Mistakes/index.php?error=402
-ErrorDocument 403 /Mistakes/index.php?error=403
-ErrorDocument 404 /Mistakes/index.php?error=404
-ErrorDocument 405 /Mistakes/index.php?error=405
-ErrorDocument 500 /Mistakes/index.php?error=500
+ErrorDocument 400 /mistakes.php?error=400
+ErrorDocument 401 /mistakes.php?error=401
+ErrorDocument 402 /mistakes.php?error=402
+ErrorDocument 403 /mistakes.php?error=403
+ErrorDocument 404 /mistakes.php?error=404
+ErrorDocument 405 /mistakes.php?error=405
+ErrorDocument 500 /mistakes.php?error=500
