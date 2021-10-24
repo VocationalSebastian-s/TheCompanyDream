@@ -28,17 +28,19 @@
                 if (password_verify($_POST['password'], $results['password'])) {
                     $_SESSION['id'] = $results['id']; /*Pasar datos a el sistema de seguridad*/
                     header('Location: ../Main/index.php'); /*Redirigir al Menu Principal */
+                    $message = 'Se ha iniciado sesión correctamente';
+                    $class = 'success';
                 } else {
                     $message = 'Error, la contraseña es incorrecta';
-                    $class = '';
+                    $class = 'error';
                 }
             } else {
                 $message = 'Error, no se pudo encontrar este correo';
-                $class = '';
+                $class = 'error';
             }
         } else {
             $message = 'Error, faltan datos para Iniciar sesión';
-            $class = '';
+            $class = 'error';
         }
     }
 
@@ -60,11 +62,11 @@
                         }
                     } catch (Exception) {
                         $message = 'Error, al verificar existencia de la cuenta';
-                        $class = '';
+                        $class = 'error';
                     }
                 } else {
                     $message = 'Error, al verificar existencia de la cuenta';
-                    $class = '';
+                    $class = 'error';
                 }
                 if ($repeated == false) {
                     $sql = 'INSERT INTO users (name,lastname,email,password) values (:name,:lastname,:email,:password)';
@@ -75,23 +77,23 @@
                     $datos->bindParam(':password', password_hash($_POST['password'], PASSWORD_BCRYPT)); /*Cifrar contraseña en hash BCRYPT */
                     if ($datos->execute()) {
                         $message = 'La cuenta ha sido creada con exito';
-                        $class = '';
+                        $class = 'success';
                         signin($conexion);
                     } else {
                         $message = 'Error, la cuenta no se pudo crear';
-                        $class = '';
+                        $class = 'error';
                     }
                 } elseif ($repeated == true) {
                     $message = 'Error, el correo ' . $_POST['email'] . ' ya existe';
-                    $class = '';
+                    $class = 'error';
                 }
             } else {
                 $message = 'Error, las contraseñas no coinciden';
-                $class = '';
+                $class = 'error';
             }
         } else {
             $message = 'Error, faltan datos para Registrarse';
-            $class = '';
+            $class = 'error';
         }
     }
 
@@ -110,6 +112,11 @@
     </head>
 
     <body>
+        <?php if (!empty($message)): ?>
+            <script type="text/javascript">
+                Sweetalert2.fire({icon:"<?php echo($message) ?>"});
+            </script>
+        <?php endif; ?>
         <!---Login-->
         <?php include('../Assets/Body/Login/index.html') ?>
     </body>
