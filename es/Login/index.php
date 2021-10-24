@@ -122,7 +122,11 @@
                     title:"<?php echo($class)?>", 
                     text:"<?php echo($message)?>",
                     timer:"3000",
-                    timerProgressBar:"True"
+                    timerProgressBar:"True",
+                    allowOutsideClick:"True",
+                    allowEscapeKey:"True",
+                    confirmButtonText:"Aceptar",
+                    confirmButtonColor:"#A8E0E6"
                 });
             </script>
                 <?php if ($class=="success"): ?>
