@@ -1,13 +1,16 @@
 <?php
     require '../../conexion.php';
 
-    session_start();
-    if (isset($_SESSION['id'])) {
-        header('Location: ../Main');
-    }
-
     $message = '';
     $class = '';
+
+    session_start();
+    if (isset($_SESSION['id'])) {
+        $message = 'Ya has inciado sesión';
+        $class = 'success';
+    }
+
+
 
     if (!empty($_POST['action'])) {
         if ($_POST['action'] == 'signin') {
@@ -112,17 +115,22 @@
     <body>
         <?php if (!empty($message)): ?>
             <script type="text/javascript">
-                Sweetalert2.fire({icon:"<?php echo($class) ?>", title:"<?php echo($class)?>", text:"<?php echo($message)?>"});
+                Sweetalert2.fire({
+                    icon:"<?php echo($class) ?>", 
+                    title:"<?php echo($class)?>", 
+                    text:"<?php echo($message)?>",
+                    time:"4000",
+                    timeProggessBar:True
+                });
             </script>
                 <?php if ($class=="success"): ?>
                     <script type="text/javascript">
-                        setTimeout(alertFunc, 1000);
+                        setTimeout(alertFunc, 6000);
                         function alertFunc() {
                             location.replace("../Main");
                         }
                     </script>
                 <?php endif; ?>
-            
         <?php endif; ?>
         <!---Login-->
         <?php include('../Assets/Body/Login/index.html') ?>
