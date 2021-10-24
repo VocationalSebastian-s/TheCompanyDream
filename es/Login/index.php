@@ -113,7 +113,7 @@
     <body>
         <?php if (!empty($message)): ?>
             <script type="text/javascript">
-                Sweetalert2.fire({icon:"<?php echo($class) ?>", title:"<?php echo($message)?>");
+                Sweetalert2.fire({icon:"<?php echo($class) ?>", title:"<?php echo($message)?>"});
             </script>
         <?php endif; ?>
         <!---Login-->
