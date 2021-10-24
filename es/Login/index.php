@@ -3,16 +3,18 @@
 
     $message = '';
     $class = '';
+    $active=True;
 
     session_start();
     if (isset($_SESSION['id'])) {
         $message = 'Ya has inciado sesión';
         $class = 'success';
+        $active=False;
     }
 
 
 
-    if (!empty($_POST['action'])) {
+    if (!empty($_POST['action']) && $active==True) {
         if ($_POST['action'] == 'signin') {
             signin($conex);
         } elseif ($_POST['action'] == 'signup') {
@@ -119,13 +121,13 @@
                     icon:"<?php echo($class) ?>", 
                     title:"<?php echo($class)?>", 
                     text:"<?php echo($message)?>",
-                    timer:"4000",
+                    timer:"3000",
                     timerProgressBar:"True"
                 });
             </script>
                 <?php if ($class=="success"): ?>
                     <script type="text/javascript">
-                        setTimeout(alertFunc, 5000);
+                        setTimeout(alertFunc, 4000);
                         function alertFunc() {
                             location.replace("../Main");
                         }
