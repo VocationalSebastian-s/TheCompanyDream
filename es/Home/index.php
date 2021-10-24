@@ -2,9 +2,9 @@
 <html>
     <head>
         <!---Default-->
-        <?php include('../Assets/default/index.html') ?>
+        <?php include('../../Assets/default/index.html') ?>
         <!---Stylesheet-->
-        <link rel="stylesheet" href="../Assets/Default/style.css">
+        <link rel="stylesheet" href="../../Assets/Default/style.css">
         <link rel="stylesheet" href="../Assets/Header/style.css">
     </head>
     <body>

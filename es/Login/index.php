@@ -100,9 +100,9 @@
 <html>
     <head>
         <!---Default-->
-        <?php include('../Assets/Default/index.html') ?>
+        <?php include('../../Assets/Default/index.html') ?>
         <!---Stylesheet-->
-        <link rel="stylesheet" href="../Assets/Default/style.css">
+        <link rel="stylesheet" href="../../Assets/Default/style.css">
         <link rel="stylesheet" href="../Assets/Body/Login/style.css">
         <style type="text/css">
 
