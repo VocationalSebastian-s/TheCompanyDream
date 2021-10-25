@@ -198,6 +198,14 @@
     border: 1px solid #333;
 }
 
+.initiation .container .formBx form select:required:invalid {
+    color: #666;
+}
+
+.initiation .container .formBx form option[value=""][disabled] {
+    display: none;
+}
+
 .initiation .container .formBx .form form input[type="submit"] {
     max-width: 100px;
     border: none;
