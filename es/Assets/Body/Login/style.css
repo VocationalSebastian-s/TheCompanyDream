@@ -252,13 +252,6 @@
     .initiation .container .boxMain .box.signin {
         top: 0;
     }
-    .initiation .container .formBx {
-        transition: 0.8s ease-in-out;
-        -webkit-transition: 0.8s ease-in-out;
-        -moz-transition: 0.8s ease-in-out;
-        -ms-transition: 0.8s ease-in-out;
-        -o-transition: 0.8s ease-in-out;
-    }
     .initiation .container .formBx.left {
         top: 0;
         left: 0;
