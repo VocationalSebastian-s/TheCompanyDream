@@ -51,8 +51,6 @@
     </div>
 </div>
 <script type="text/javascript">
-    const formBx = document.querySelector('.formBx');
-
     function habilitar() {
         var actionIn = document.getElementById('actionIn');
         var nameIn = document.getElementById('nameIn');
@@ -60,7 +58,7 @@
         var passwordIn = document.getElementById('passwordIn');
         var submitIn = document.getElementById('submitIn');
 
-        if (actionIn == "" || nameIn == "" || emailIn == "" || passwordIn == "") {
+        if (actionIn.value == "" || nameIn.value == "" || emailIn.value == "" || passwordIn.value == "") {
             sumbitIn.disabled = true;
         } else {
             sumbitIn.disabled = false;
@@ -74,12 +72,14 @@
         var typeUp = document.getElementById('typeUp');
         var submitUp = document.getElementById('submitUp');
 
-        if (actionUp == "" || nameUp == "" || emailUp == "" || passwordUp == "" || passwordcheckUp == "" || typeUp == "" || passwordUp == passwordcheckUp) {
+        if (actionUp.value == "" || nameUp.value == "" || emailUp.value == "" || passwordUp.value == "" || passwordcheckUp.value == "" || typeUp.value == "" || passwordUp.value == passwordcheckUp.value) {
             sumbitUp.disabled = true;
         } else {
             sumbitUp.disabled = false;
         }
     }
+
+    const formBx = document.querySelector('.formBx');
 
     function right() {
         formBx.classList.remove('left');
