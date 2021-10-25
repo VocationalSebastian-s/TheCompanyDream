@@ -35,11 +35,14 @@
                 <form action="index.php" method="post">
                     <h3>Inscribirse</h3>
                     <input type="hidden" name="action" value="signup" required>
-                    <input type="text" name="name" placeholder="Nombre(s)" maxlength="14" required>
-                    <input type="text" name="lastname" placeholder="Apellido(s)" maxlength="30" required>
+                    <input type="text" name="name" placeholder="Nombre Y Apellido(s)" maxlength="14" required>
                     <input type="email" name="email" placeholder="Correo" maxlength="120" required>
                     <input type="password" name="password" placeholder="Contraseña" maxlength="20" required>
                     <input type="password" name="passwordcheck" placeholder="Verificar Contraseña" maxlength="20" required>
+                    <select name="type" placeholder="Seleccione Su Cargo">
+                        <option value="0">Empleado</option>
+                        <option value="1">Jefe</option>
+                    </select>
                     <input type="submit" value="Registrar">
                 </form>
             </div>
