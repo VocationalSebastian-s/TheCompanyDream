@@ -30,12 +30,17 @@
             $datos->bindParam(':email', $_POST['email']);
             if ($datos->execute()) {
                 $results = $datos->fetch(PDO::FETCH_ASSOC); /*Datos almacenado en Array*/
-                if (password_verify($_POST['password'], $results['password'])) {
-                    $_SESSION['id'] = $results['id']; /*Pasar datos a el sistema de seguridad*/
-                    $GLOBALS['message'] = 'Se ha iniciado sesión correctamente';
-                    $GLOBALS['class'] = 'success';
-                } else {
-                    $GLOBALS['message'] = 'Error, la contraseña es incorrecta';
+                if($_POST['email']==$results['email']) {
+                    if (password_verify($_POST['password'], $results['password'])) {
+                        $_SESSION['id'] = $results['id']; /*Pasar datos a el sistema de seguridad*/
+                        $GLOBALS['message'] = 'Se ha iniciado sesión correctamente';
+                        $GLOBALS['class'] = 'success';
+                    } else {
+                        $GLOBALS['message'] = 'Error, la contraseña es incorrecta';
+                        $GLOBALS['class'] = 'error';
+                    }
+                }else{
+                    $GLOBALS['message'] = 'Error, el correo no existe';
                     $GLOBALS['class'] = 'error';
                 }
             } else {
