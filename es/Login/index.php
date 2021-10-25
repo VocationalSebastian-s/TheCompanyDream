@@ -55,7 +55,7 @@
 
     function signup($conexion)
     {
-        if (!empty($_POST['name']) && !empty($_POST['lastname']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordcheck'])) {
+        if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordcheck'])) {
             if ($_POST['password'] == $_POST['passwordcheck']) {
                 $sql = 'SELECT email FROM users WHERE email = :email';
                 $datos = $conexion->prepare($sql);
@@ -81,7 +81,7 @@
                     $sql = 'INSERT INTO users (name,lastname,email,password) values (:name,:lastname,:email,:password)';
                     $datos = $conexion->prepare($sql);
                     $datos->bindParam(':name', $_POST['name']);
-                    $datos->bindParam(':lastname', $_POST['lastname']);
+                    $datos->bindParam(':lastname', $_POST['name']);
                     $datos->bindParam(':email', $_POST['email']);
                     $datos->bindParam(':password', password_hash($_POST['password'], PASSWORD_BCRYPT)); /*Cifrar contraseña en hash BCRYPT */
                     if ($datos->execute()) {
