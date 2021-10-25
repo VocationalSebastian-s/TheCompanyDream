@@ -71,7 +71,7 @@
         var typeUp = document.getElementById('typeUp');
         var submitUp = document.getElementById('submitUp');
 
-        if (actionUp.value == "" || nameUp.value == "" || emailUp.value == "" || passwordUp.value == "" || passwordcheckUp.value == "" || typeUp.value == "" || passwordUp.value == passwordcheckUp.value) {
+        if (actionUp.value == "" || nameUp.value == "" || emailUp.value == "" || passwordUp.value == "" || passwordcheckUp.value == "" || typeUp.value == "" || passwordUp.value != passwordcheckUp.value) {
             sumbitUp.disabled = true;
         } else {
             sumbitUp.disabled = false;
