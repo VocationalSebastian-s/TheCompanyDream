@@ -145,5 +145,8 @@
         <?php endif; ?>
         <!---Login-->
         <?php include('../Assets/Body/Login/index.html') ?>
+        <script type="text/javascript">
+            <?php include('../Assets/Body/Login/main.js') ?>
+        </script>
     </body>
 </html>
