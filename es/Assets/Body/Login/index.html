@@ -27,7 +27,7 @@
                     <input id="actionIn" type="hidden" name="action" value="signin" required>
                     <input id="emailIn" onkeyup="habilitar()" type="email" name="email" placeholder="Correo" maxlength="120" required>
                     <input id="passwordIn" onkeyup="habilitar()" type="password" name="password" placeholder="Contraseña" maxlength="20" required>
-                    <input id="sumbitIn" type="submit" value="Ingresar">
+                    <input id="submitIn" type="submit" value="Ingresar">
                     <a href="#" class="forgot">¿Olvidaste Tu Contraseña?</a>
                 </form>
             </div>
@@ -59,10 +59,8 @@
 
         if (actionIn.value == "" || emailIn.value == "" || passwordIn.value == "") {
             sumbitIn.disabled = true;
-            submitIn.style.setProperty('--color', '#1A5276');
         } else {
             sumbitIn.disabled = false;
-            submitIn.style.setProperty('--color', '#363636');
         }
 
         var actionUp = document.getElementById('actionUp');
@@ -75,10 +73,10 @@
 
         if (actionUp.value == "" || nameUp.value == "" || emailUp.value == "" || passwordUp.value == "" || passwordcheckUp.value == "" || typeUp.value == "" || passwordUp.value != passwordcheckUp.value) {
             sumbitUp.disabled = true;
-            submitUp.style.setProperty('--color', '#1A5276');
+            submitUp.style.setProperty = '#363636';
         } else {
             sumbitUp.disabled = false;
-            submitUp.style.setProperty('--color', '#363636');
+            submitUp.style.setProperty = '#363636';
         }
     }
 

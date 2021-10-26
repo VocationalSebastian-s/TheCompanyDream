@@ -206,7 +206,8 @@
     display: none;
 }
 
-.initiation .container .formBx .form form input[type="submit"] {
+.initiation .container .formBx .form form input[id="submitUp"],
+.initiation .container .formBx .form form input[id="submitIn"] {
     max-width: 100px;
     border-color: #363636;
     background: transparent;
@@ -220,17 +221,14 @@
     -o-transition: 0.8s ease-in-out;
 }
 
-.initiation .container .formBx .form form input[type="submit"]:hover {
+.initiation .container .formBx .form form input[id="submitUp"]:hover {
     color: #fff;
-    background: #1A5276;
+    background: var(--colorUp);
 }
 
-.initiation .container .formBx .form form .submitIn.active {
-    background: #1A5276;
-}
-
-.initiation .container .formBx .form form .submitUp.active {
-    background: #1A5276;
+.initiation .container .formBx .form form input[id="submitIn"]:hover {
+    color: #fff;
+    background: var(--colorIn);
 }
 
 .initiation .container .formBx .form form .forgot {
