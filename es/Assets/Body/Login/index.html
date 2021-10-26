@@ -58,8 +58,10 @@
         var submitIn = document.getElementById('submitIn');
 
         if (actionIn.value == "" || emailIn.value == "" || passwordIn.value == "") {
+            alert("trueIn");
             sumbitIn.disabled = true;
         } else {
+            alert("falseIn");
             sumbitIn.disabled = false;
         }
 
@@ -73,8 +75,10 @@
 
         if (actionUp.value == "" || nameUp.value == "" || emailUp.value == "" || passwordUp.value == "" || passwordcheckUp.value == "" || typeUp.value == "" || passwordUp.value != passwordcheckUp.value) {
             sumbitUp.disabled = true;
+            alert("trueUp");
         } else {
             sumbitUp.disabled = false;
+            alert("trueUp");
         }
     }
 
