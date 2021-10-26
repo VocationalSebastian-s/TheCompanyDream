@@ -114,7 +114,7 @@
         <!---Stylesheet-->
         <link rel="stylesheet" href="../../Assets/Default/style.css">
         <link rel="stylesheet" href="../Assets/Body/Login/style.css">
-        <script src="/../Assets/Body/Login/style.css"></script>
+        <script src="/../Assets/Body/Login/main.js"></script>
         <style type="text/css">
 
         </style>
