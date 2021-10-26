@@ -221,14 +221,24 @@
     -o-transition: 0.8s ease-in-out;
 }
 
+.initiation .container .formBx .form form input[id="submitUp"]:disabled:hover {
+    color: #fff;
+    background: #363636;
+}
+
+.initiation .container .formBx .form form input[id="submitIn"]:disabled:hover {
+    color: #fff;
+    background: #363636;
+}
+
 .initiation .container .formBx .form form input[id="submitUp"]:hover {
     color: #fff;
-    background: var(--colorUp);
+    background: #1A5276;
 }
 
 .initiation .container .formBx .form form input[id="submitIn"]:hover {
     color: #fff;
-    background: var(--colorIn);
+    background: #1A5276;
 }
 
 .initiation .container .formBx .form form .forgot {

@@ -1,4 +1,4 @@
-<div class="initiation">
+<div class="initiation" onload="habilitar()">
     <div class="container">
         <div class="boxMain">
             <div class="box signin">
@@ -73,10 +73,8 @@
 
         if (actionUp.value == "" || nameUp.value == "" || emailUp.value == "" || passwordUp.value == "" || passwordcheckUp.value == "" || typeUp.value == "" || passwordUp.value != passwordcheckUp.value) {
             sumbitUp.disabled = true;
-            submitUp.style.setProperty = '#363636';
         } else {
             sumbitUp.disabled = false;
-            submitUp.style.setProperty = '#363636';
         }
     }
 
