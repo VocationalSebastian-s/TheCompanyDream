@@ -25,8 +25,8 @@
     function verifypassword($password){
         if(strlen($password)>7){
             if(preg_match("/[\d]/", $password)>0){
-                if(preg_match("/[\A-Z]/", $password)>0){
-                    if(preg_match("/[\a-z]/", $password)>0){
+                if(preg_match("/[A-Z]/", $password)>0){
+                    if(preg_match("/[a-z]/", $password)>0){
                         if(preg_match("/[\W]/", $password)>0){
                             return True;
                         }else{
