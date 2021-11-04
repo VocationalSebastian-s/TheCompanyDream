@@ -1,5 +1,4 @@
 <?php
-    echo $_SERVER['DOCUMENT_ROOT'];
     require '../../../server/connection/conexion.php';
 
     $message = '';
