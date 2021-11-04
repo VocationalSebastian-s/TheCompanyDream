@@ -91,7 +91,8 @@
     {
         if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordcheck'])) {
             if ($_POST['password'] == $_POST['passwordcheck']) {
-                if(verifypassword($_POST['password'])){
+                $active=verifypassword($_POST['password']);
+                if($active==True){
                     $sql = 'SELECT email FROM users WHERE email = :email';
                     $datos = $conexion->prepare($sql);
                     $datos->bindParam(':email', $_POST['email']);
