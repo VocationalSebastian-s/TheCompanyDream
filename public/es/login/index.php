@@ -22,6 +22,35 @@
         }
     }
 
+    function verifypassword($password){
+        if(strlen($password)>7){
+            if(preg_match("/[\d]/", $password)>0){
+                if(preg_match("/[\A-Z]/", $password)>0){
+                    if(preg_match("/[\a-z]/", $password)>0){
+                        if(preg_match("/[\W]/", $password)>0){
+                            return True;
+                        }else{
+                            $GLOBALS['message'] = 'La contraseña debe tener al menos un caracter especial';
+                            $GLOBALS['class'] = 'error';
+                        }
+                    }else{
+                        $GLOBALS['message'] = 'La contraseña debe tener al menos una minuscula';
+                        $GLOBALS['class'] = 'error';
+                    }
+                }else{
+                    $GLOBALS['message'] = 'La contraseña debe tener al menos una mayuscula';
+                    $GLOBALS['class'] = 'error';
+                }
+            }else{
+                $GLOBALS['message'] = 'La contraseña debe tener al menos un numero';
+                $GLOBALS['class'] = 'error';
+            }
+        }else{
+            $GLOBALS['message'] = 'La contraseña debe ser minimo de 8 caracteres';
+            $GLOBALS['class'] = 'error';
+        }
+    }
+
     function signin($conexion)
     {
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
@@ -57,44 +86,46 @@
     {
         if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordcheck'])) {
             if ($_POST['password'] == $_POST['passwordcheck']) {
-                $sql = 'SELECT email FROM users WHERE email = :email';
-                $datos = $conexion->prepare($sql);
-                $datos->bindParam(':email', $_POST['email']);
+                if(verifypassword($_POST['password'])){
+                    $sql = 'SELECT email FROM users WHERE email = :email';
+                    $datos = $conexion->prepare($sql);
+                    $datos->bindParam(':email', $_POST['email']);
 
-                if ($datos->execute()) {
-                    try {
-                        $results = $datos->fetch(PDO::FETCH_ASSOC);
-                        if ($results['email'] == $_POST['email']) {
-                            $repeated = true;
-                        } else {
-                            $repeated = false;
+                    if ($datos->execute()) {
+                        try {
+                            $results = $datos->fetch(PDO::FETCH_ASSOC);
+                            if ($results['email'] == $_POST['email']) {
+                                $repeated = true;
+                            } else {
+                                $repeated = false;
+                            }
+                        } catch (Exception) {
+                            $GLOBALS['message'] = 'Error, al verificar existencia de la cuenta';
+                            $GLOBALS['class'] = 'error';
                         }
-                    } catch (Exception) {
+                    } else {
                         $GLOBALS['message'] = 'Error, al verificar existencia de la cuenta';
                         $GLOBALS['class'] = 'error';
                     }
-                } else {
-                    $GLOBALS['message'] = 'Error, al verificar existencia de la cuenta';
-                    $GLOBALS['class'] = 'error';
-                }
-                if ($repeated == false) {
-                    $sql = 'INSERT INTO users (name,lastname,email,password) values (:name,:lastname,:email,:password)';
-                    $datos = $conexion->prepare($sql);
-                    $datos->bindParam(':name', $_POST['name']);
-                    $datos->bindParam(':lastname', $_POST['name']);
-                    $datos->bindParam(':email', $_POST['email']);
-                    $datos->bindParam(':password', password_hash($_POST['password'], PASSWORD_BCRYPT)); /*Cifrar contraseña en hash BCRYPT */
-                    if ($datos->execute()) {
-                        $message = 'La cuenta ha sido creada con exito';
-                        $GLOBALS['class'] = 'success';
-                        signin($conexion);
-                    } else {
-                        $GLOBALS['message'] = 'Error, la cuenta no se pudo crear';
+                    if ($repeated == false) {
+                        $sql = 'INSERT INTO users (name,lastname,email,password) values (:name,:lastname,:email,:password)';
+                        $datos = $conexion->prepare($sql);
+                        $datos->bindParam(':name', $_POST['name']);
+                        $datos->bindParam(':lastname', $_POST['name']);
+                        $datos->bindParam(':email', $_POST['email']);
+                        $datos->bindParam(':password', password_hash($_POST['password'], PASSWORD_BCRYPT)); /*Cifrar contraseña en hash BCRYPT */
+                        if ($datos->execute()) {
+                            $message = 'La cuenta ha sido creada con exito';
+                            $GLOBALS['class'] = 'success';
+                            signin($conexion);
+                        } else {
+                            $GLOBALS['message'] = 'Error, la cuenta no se pudo crear';
+                            $GLOBALS['class'] = 'error';
+                        }
+                    } elseif ($repeated == true) {
+                        $GLOBALS['message'] = 'Error, el correo ' . $_POST['email'] . ' ya existe';
                         $GLOBALS['class'] = 'error';
                     }
-                } elseif ($repeated == true) {
-                    $GLOBALS['message'] = 'Error, el correo ' . $_POST['email'] . ' ya existe';
-                    $GLOBALS['class'] = 'error';
                 }
             } else {
                 $GLOBALS['message'] = 'Error, las contraseñas no coinciden';
