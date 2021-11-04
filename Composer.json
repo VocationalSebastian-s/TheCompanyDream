@@ -6,7 +6,7 @@
     "type": "library",
     "license": "MIT",
     "authors": [{
-        "name": "David Zuelke",
+        "name": "",
         "email": "dz@heroku.com"
     }],
     "bin": [
