@@ -138,7 +138,7 @@
                     <script type="text/javascript">
                         setTimeout(alertFunc, 4000);
                         function alertFunc() {
-                            location.replace("../Main");
+                            location.replace("../main");
                         }
                     </script>
                 <?php endif; ?>
