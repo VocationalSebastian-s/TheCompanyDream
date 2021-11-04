@@ -7,10 +7,10 @@
         <style>
             <?php include('assets/fonts/style.css') ?>
             <?php include('assets/utils/style.css') ?>
-            <?php include('assets/components/mistakes/style.css') ?>
+            <?php include('assets/components/error/style.css') ?>
         </style>
     </head>
     <body>
-        <?php include('assets/components/mistakes/index.html') ?>
+        <?php include('assets/components/error/index.html') ?>
     </body>
 </html>
