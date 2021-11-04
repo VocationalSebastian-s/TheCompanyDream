@@ -12,5 +12,6 @@
     </head>
     <body>
         <?php include('../assets/components/mistakes/index.html') ?>
+        <?php include('../assets/components/mistakes/src/images/error.png') ?>
     </body>
 </html>
