@@ -24,30 +24,35 @@
 
     function verifypassword($password){
         if((strlen($password))>7){
-            if((preg_match("/[\d]/", $password))>0){
-                if((preg_match("/[A-Z]/", $password))>0){
-                    if((preg_match("/[a-z]/", $password))>0){
-                        if((preg_match("/[\W]/", $password))>0){
+            if((preg_match_all("/[\d]/", $password))>0){
+                if((preg_match_all("/[A-Z]/", $password))>0){
+                    if((preg_match_all("/[a-z]/", $password))>0){
+                        if((preg_match_all("/[\W]/", $password))>0){
                             return True;
                         }else{
                             $GLOBALS['message'] = 'La contraseña debe tener al menos un caracter especial';
                             $GLOBALS['class'] = 'error';
+                            return False;
                         }
                     }else{
                         $GLOBALS['message'] = 'La contraseña debe tener al menos una minuscula';
                         $GLOBALS['class'] = 'error';
+                        return False;
                     }
                 }else{
                     $GLOBALS['message'] = 'La contraseña debe tener al menos una mayuscula';
                     $GLOBALS['class'] = 'error';
+                    return False;
                 }
             }else{
                 $GLOBALS['message'] = 'La contraseña debe tener al menos un numero';
                 $GLOBALS['class'] = 'error';
+                return False;
             }
         }else{
             $GLOBALS['message'] = 'La contraseña debe ser minimo de 8 caracteres';
             $GLOBALS['class'] = 'error';
+            return False;
         }
     }
 
