@@ -10,7 +10,7 @@
         "email": ""
     }],
     "bin": [
-        "bin/heroku-php-apache2 public",
+        "bin/heroku-php-apache2 public/",
         "bin/heroku-php-nginx"
     ]
 }
