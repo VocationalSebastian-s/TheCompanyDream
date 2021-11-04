@@ -112,12 +112,11 @@
         <!---Meta Etiquetas-->
         <?php include('../../../assets/utils/index.html') ?>
         <!---Stylesheet-->
-        <?php include('../../../assets/fonts/style.css') ?>
-        <?php include('../../../assets/utils/style.css') ?>
-        <link rel="stylesheet" href="../assets/components/login/style.css">
         <style type="text/css">
-
+            <?php include('../../../assets/fonts/style.css') ?>
+            <?php include('../../../assets/utils/style.css') ?>
         </style>
+        <link rel="stylesheet" href="../assets/components/login/style.css">
     </head>
 
     <body>
