@@ -1,0 +1,278 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.initiation {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(src/images/fondo.jpg) center fixed;
+    background-size: 100%;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+
+.initiation .container {
+    position: relative;
+    width: 800px;
+    height: 500px;
+    margin: 20px;
+    z-index: 1;
+}
+
+.initiation .container .boxMain {
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    height: 420px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.15);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.initiation .container .boxMain .box {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.initiation .container .boxMain .box h2 {
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.initiation .container .boxMain .box #btn {
+    position: relative;
+    display: inline-flex;
+    padding: 12px 30px;
+    background: #363636;
+    color: #fff;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.initiation .container .boxMain .box #btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.initiation .container .boxMain .box #btn::before {
+    content: '';
+    position: absolute;
+    top: var(--y)+0.5;
+    left: var(--x);
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background: #A8E0E6;
+    transition: width 1s, height 1s;
+    -webkit-transition: width 1s, height 1s;
+    -moz-transition: width 1s, height 1s;
+    -ms-transition: width 1s, height 1s;
+    -o-transition: width 1s, height 1s;
+}
+
+.initiation .container .boxMain .box #btn:hover:before {
+    width: 300px;
+    height: 300px;
+}
+
+.initiation .container .boxMain .box #btn:hover {
+    color: #000;
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    -ms-transition: 1s;
+    -o-transition: 1s;
+}
+
+.initiation .container .formBx {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: #a8e0e6;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 45px rgba(0, 0, 0, 0.25);
+    transition: 0.5s ease-in-out;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -ms-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    overflow: hidden;
+}
+
+.initiation .container .formBx.left {
+    left: 0;
+}
+
+.initiation .container .formBx.right {
+    left: 50%;
+}
+
+.initiation .container .formBx .form {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    padding: 50px;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+
+.initiation .container .formBx.left .signinForm {
+    left: 0%;
+    transition-delay: 0.25s;
+}
+
+.initiation .container .formBx.right .signinForm {
+    left: -100%;
+}
+
+.initiation .container .formBx.left .signupForm {
+    left: 100%;
+}
+
+.initiation .container .formBx.rigth .signupForm {
+    left: -100%;
+    transition-delay: 0.25s;
+}
+
+.initiation .container .formBx .form form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.initiation .container .formBx .form form h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.initiation .container .formBx form input {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    outline: none;
+    font-size: 16px;
+    border: 1px solid #333;
+}
+
+.initiation .container .formBx form select {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    outline: none;
+    font-size: 16px;
+    border: 1px solid #333;
+}
+
+.initiation .container .formBx form select:required:invalid {
+    color: #666;
+}
+
+.initiation .container .formBx form option[value=""][disabled] {
+    display: none;
+}
+
+.initiation .container .formBx .form form input[id="submitUp"],
+.initiation .container .formBx .form form input[id="submitIn"] {
+    max-width: 100px;
+    border-color: #363636;
+    background: #1A5276;
+    color: #000;
+    cursor: pointer;
+    box-shadow: 0 0 1px 0 #363636 inset;
+    transition: 0.8s ease-in-out;
+    -webkit-transition: 0.8s ease-in-out;
+    -moz-transition: 0.8s ease-in-out;
+    -ms-transition: 0.8s ease-in-out;
+    -o-transition: 0.8s ease-in-out;
+}
+
+.initiation .container .formBx .form form .forgot {
+    color: #333;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+}
+
+.initiation .container .formBx .form form .forgot:hover {
+    color: #467A84;
+}
+
+@media (max-width: 1240px) {
+    .initiation {
+        background-size: auto;
+    }
+}
+
+@media (max-width: 991px) {
+    .initiation .container {
+        max-width: 400px;
+        height: 650px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .initiation .container .boxMain {
+        top: 0;
+        height: 100%;
+    }
+    .initiation .container .formBx {
+        width: 100%;
+        height: 500px;
+        top: 0;
+        box-shadow: none;
+    }
+    .initiation .container .boxMain .box {
+        position: absolute;
+        width: 100%;
+        height: 150px;
+        bottom: 0;
+    }
+    .initiation .container .boxMain .box.signin {
+        top: 0;
+    }
+    .initiation .container .formBx.left {
+        top: 0;
+        left: 0;
+    }
+    .initiation .container .formBx.right {
+        top: 150px;
+        left: 0;
+    }
+}

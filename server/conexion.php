@@ -10,6 +10,7 @@
 	$username = 'W80NGrZVyT';
 	$password = 'VU7ZJIPVe8';
 	$database = 'W80NGrZVyT';
+	
 
 	try {
 	  $conex= new PDO("mysql:host=$server;dbname=$database;", $username, $password);

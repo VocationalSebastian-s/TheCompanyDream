@@ -1,0 +1,42 @@
+<div class="initiation">
+    <div class="container">
+        <div class="boxMain">
+            <div class="box signin">
+                <h2>¿Ya tienes una cuenta?</h2>
+                <a onclick="left()" id="btn" class="signinBtn"><span>Iniciar sesión</span></a>
+            </div>
+            <div class="box signup">
+                <h2>¿Aun no tienes una cuenta?</h2>
+                <a onclick="right()" id="btn" class="signupBtn"><span>Inscribirse</span></a>
+            </div>
+        </div>
+        <div class="formBx left">
+            <div class="form signinForm">
+                <form action="index.php" method="post">
+                    <h3>Iniciar sesión</h3>
+                    <input id="actionIn" type="hidden" name="action" value="signin" required>
+                    <input id="emailIn" onkeyup="habilitar()" type="email" name="email" placeholder="Correo" maxlength="120" required>
+                    <input id="passwordIn" onkeyup="habilitar()" type="password" name="password" placeholder="Contraseña" maxlength="20" required>
+                    <input id="submitIn" type="submit" value="Ingresar">
+                    <a href="#" class="forgot">¿Olvidaste Tu Contraseña?</a>
+                </form>
+            </div>
+            <div class="form signupForm">
+                <form action="index.php" method="post">
+                    <h3>Inscribirse</h3>
+                    <input id="actionUp" type="hidden" name="action" value="signup" required>
+                    <input id="nameUp" onkeyup="habilitar()" type="text" name="name" placeholder="Nombre Y Apellido(s)" maxlength="14" required>
+                    <input id="emailUp" onkeyup="habilitar()" type="email" name="email" placeholder="Correo" maxlength="120" required>
+                    <input id="passwordUp" onkeyup="habilitar()" type="password" name="password" placeholder="Contraseña" maxlength="20" required>
+                    <input id="passwordcheckUp" onkeyup="habilitar()" type="password" name="passwordcheck" placeholder="Verificar Contraseña" maxlength="20" required>
+                    <select id="typeUp" onkeyup="habilitar()" name="type" required>
+                        <option value="">Seleccione Su Cargo</option>
+                        <option value="0">Empleado</option>
+                        <option value="1">Jefe</option>
+                    </select>
+                    <input id="submitUp" type="submit" value="Registrar">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
