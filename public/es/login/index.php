@@ -28,7 +28,8 @@
                 if((preg_match_all("/[A-Z]/", $password))>0){
                     if((preg_match_all("/[a-z]/", $password))>0){
                         if((preg_match_all("/[\W]/", $password))>0){
-                            return true;
+                            $active=True;
+                            return $active;
                         }else{
                             $GLOBALS['message'] = 'La contraseña debe tener al menos un caracter especial';
                             $GLOBALS['class'] = 'error';
