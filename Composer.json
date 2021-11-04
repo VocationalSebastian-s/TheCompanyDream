@@ -6,8 +6,8 @@
     "type": "library",
     "license": "MIT",
     "authors": [{
-        "name": "David Zuelke",
-        "email": "dz@heroku.com"
+        "name": "Technos",
+        "email": ""
     }],
     "bin": [
         "bin/heroku-php-apache2 public",
