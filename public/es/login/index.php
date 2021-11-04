@@ -3,18 +3,18 @@
 
     $message = '';
     $class = '';
-    $active=True;
+    $active=true;
 
     session_start();
     if (isset($_SESSION['id'])) {
         $message = 'Ya has inciado sesión';
         $class = 'success';
-        $active=False;
+        $active=false;
     }
 
 
 
-    if (!empty($_POST['action']) && $active==True) {
+    if (!empty($_POST['action']) && $active==true) {
         if ($_POST['action'] == 'signin') {
             signin($conex);
         } elseif ($_POST['action'] == 'signup') {
@@ -28,31 +28,31 @@
                 if((preg_match_all("/[A-Z]/", $password))>0){
                     if((preg_match_all("/[a-z]/", $password))>0){
                         if((preg_match_all("/[\W]/", $password))>0){
-                            return True;
+                            return true;
                         }else{
                             $GLOBALS['message'] = 'La contraseña debe tener al menos un caracter especial';
                             $GLOBALS['class'] = 'error';
-                            return False;
+                            return false;
                         }
                     }else{
                         $GLOBALS['message'] = 'La contraseña debe tener al menos una minuscula';
                         $GLOBALS['class'] = 'error';
-                        return False;
+                        return false;
                     }
                 }else{
                     $GLOBALS['message'] = 'La contraseña debe tener al menos una mayuscula';
                     $GLOBALS['class'] = 'error';
-                    return False;
+                    return false;
                 }
             }else{
                 $GLOBALS['message'] = 'La contraseña debe tener al menos un numero';
                 $GLOBALS['class'] = 'error';
-                return False;
+                return false;
             }
         }else{
             $GLOBALS['message'] = 'La contraseña debe ser minimo de 8 caracteres';
             $GLOBALS['class'] = 'error';
-            return False;
+            return false;
         }
     }
 
@@ -91,7 +91,7 @@
     {
         if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordcheck'])) {
             if ($_POST['password'] == $_POST['passwordcheck']) {
-                if(verifypassword($_POST['password'])==True){
+                if(verifypassword($_POST['password'])){
                     $sql = 'SELECT email FROM users WHERE email = :email';
                     $datos = $conexion->prepare($sql);
                     $datos->bindParam(':email', $_POST['email']);
