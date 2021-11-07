@@ -216,7 +216,7 @@
     -o-transition: 0.8s ease-in-out;
 }
 
-.initiation .container .formBx .form form .forgot {
+.initiation .container .formBx .form form .inputs .forgot {
     color: #333;
     transition: 0.5s;
     -webkit-transition: 0.5s;
@@ -225,7 +225,7 @@
     -o-transition: 0.5s;
 }
 
-.initiation .container .formBx .form form .forgot:hover {
+.initiation .container .formBx .form form .inputs .forgot:hover {
     color: #467A84;
 }
 
