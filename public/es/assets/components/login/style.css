@@ -218,6 +218,10 @@
     width: 20%;
 }
 
+.initiation .container .formBx .form form .terms a {
+    text-decoration: none;
+}
+
 .initiation .container .formBx .form form .forgot {
     color: #333;
     transition: 0.5s;
