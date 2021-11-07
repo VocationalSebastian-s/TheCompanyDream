@@ -199,10 +199,8 @@
     display: none;
 }
 
-.initiation .container .formBx .form form input[type="checkbox"] {}
-
-.initiation .container .formBx .form form .inputs input[id="submitUp"],
-.initiation .container .formBx .form form .inputs input[id="submitIn"] {
+.initiation .container .formBx .form form input[id="submitUp"],
+.initiation .container .formBx .form form input[id="submitIn"] {
     max-width: 100px;
     border-color: #363636;
     background: #1A5276;
@@ -216,7 +214,7 @@
     -o-transition: 0.8s ease-in-out;
 }
 
-.initiation .container .formBx .form form .inputs .forgot {
+.initiation .container .formBx .form form .forgot {
     color: #333;
     transition: 0.5s;
     -webkit-transition: 0.5s;
@@ -225,7 +223,7 @@
     -o-transition: 0.5s;
 }
 
-.initiation .container .formBx .form form .inputs .forgot:hover {
+.initiation .container .formBx .form form .forgot:hover {
     color: #467A84;
 }
 
