@@ -1,34 +1,98 @@
-window.onload = function() {
-    habilitar();
+function habilitarIn() {
+    var emailIn = document.getElementById('emailIn').value;
+    var passwordIn = document.getElementById('passwordIn').value;
+    var btnIn = document.getElementById('submitIn');
+    if (emailIn != '') {
+        btnIn.disabled = false;
+        btnIn.classList.remove('disabled');
+        if (passwordIn != '') {
+            btnIn.disabled = false;
+            btnIn.classList.remove('disabled');
+            hoveralert("success", "Parametros Correctos");
+        } else {
+            btnIn.disabled = true;
+            btnIn.classList.add('disabled');
+            hoveralert("error", "Contraseña Vacia");
+        }
+    } else {
+        btnIn.disabled = true;
+        btnIn.classList.add('disabled');
+        hoveralert("error", "Correo Vacio");
+    }
 }
 
-function habilitar() {
-    var actionIn = document.getElementById('actionIn');
-    var emailIn = document.getElementById('emailIn');
-    var passwordIn = document.getElementById('passwordIn');
-    var submitIn = document.getElementById('submitIn');
-
-    if (actionIn.value == "" || emailIn.value == "" || passwordIn.value == "") {
-        sumbitIn.disabled = true;
+function habilitarUp() {
+    var emailUp = document.getElementById('emailUp').value;
+    var passwordUp = document.getElementById('passwordUp').value;
+    var passwordcheckUp = document.getElementById('passwordcheckUp').value;
+    var btnUp = document.getElementById('submitUp');
+    /*Verificacion de Email */
+    var params = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    if (emailUp != '' && params.test(emailUp) == true) {
+        btnUp.disabled = false;
+        btnUp.classList.remove('disabled');
+        if (passwordcheckUp == passwordUp) {
+            btnUp.disabled = false;
+            btnUp.classList.remove('disabled');
+            if (/[\d]/.test(passwordUp)) {
+                btnUp.disabled = false;
+                btnUp.classList.remove('disabled');
+                if (/[A-Z]/.test(passwordUp)) {
+                    btnUp.disabled = false;
+                    btnUp.classList.remove('disabled');
+                    if (/[a-z]/.test(passwordUp)) {
+                        btnUp.disabled = false;
+                        btnUp.classList.remove('disabled');
+                        if (/[\W]/.test(passwordUp)) {
+                            btnUp.disabled = false;
+                            btnUp.classList.remove('disabled');
+                            hoveralert("success", "Parametros Correctos");
+                        } else {
+                            hoveralert("error", "La contraseña debe tener un caracter especial");
+                            btnUp.disabled = true;
+                            btnUp.classList.add('disabled');
+                        }
+                    } else {
+                        hoveralert("error", "La contraseña debe tener una minúscula");
+                        btnUp.disabled = true;
+                        btnUp.classList.add('disabled');
+                    }
+                } else {
+                    hoveralert("error", "La contraseña debe tener una mayúscula");
+                    btnUp.disabled = true;
+                    btnUp.classList.add('disabled');
+                }
+            } else {
+                hoveralert("error", "La contraseña debe tener un numero");
+                btnUp.disabled = true;
+                btnUp.classList.add('disabled');
+            }
+        } else {
+            hoveralert("error", "Las contraseñas no coinciden");
+            btnUp.disabled = true;
+            btnUp.classList.add('disabled');
+        }
     } else {
-        sumbitIn.disabled = false;
+        hoveralert("error", "El correo no es correcto");
+        btnUp.disabled = true;
+        btnUp.classList.add('disabled');
     }
+}
 
-    var actionUp = document.getElementById('actionUp');
-    var nameUp = document.getElementById('nameUp');
-    var emailUp = document.getElementById('emailUp');
-    var passwordUp = document.getElementById('passwordUp');
-    var passwordcheckUp = document.getElementById('passwordcheckUp');
-    var typeUp = document.getElementById('typeUp');
-    var submitUp = document.getElementById('submitUp');
+function hoveralert(icon, title) {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'bottom-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+    })
 
-    if (actionUp.value == "" || nameUp.value == "" || emailUp.value == "" || passwordUp.value == "" || passwordcheckUp.value == "" || typeUp.value == "" || passwordUp.value != passwordcheckUp.value) {
-        sumbitUp.disabled = true;
-        alert("trueUp");
-    } else {
-        sumbitUp.disabled = false;
-        alert("trueUp");
-    }
+    Toast.fire({
+        icon: icon,
+        title: title
+    })
+
 }
 
 const formBx = document.querySelector('.formBx');

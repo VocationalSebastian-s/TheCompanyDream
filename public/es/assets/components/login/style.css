@@ -214,6 +214,21 @@
     -o-transition: 0.8s ease-in-out;
 }
 
+.initiation .container .formBx .form form input[class="disabled"],
+.initiation .container .formBx .form form input[class="disabled"] {
+    background: #363636;
+    color: #fff;
+    cursor: default;
+}
+
+.fas.fa-check-circle {
+    color: #2A982A;
+}
+
+.fas.fa-ban {
+    color: #F20000;
+}
+
 .initiation .container .formBx .form form .terms {
     white-space: nowrap;
     margin: auto;

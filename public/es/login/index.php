@@ -26,7 +26,7 @@
             signup($conex);
         }
     }
-    // Verificacion de correo con funcion '/^[A-z0-9\\._-]+@[A-z0-9][A-z0-9-]*(\\.[A-z0-9_-]+)*\\.([A-z]{2,6})$/' //
+    // Verificacion de correo con funcion '/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i' //
     function verifyemail($email){
         if(filter_var($email, FILTER_VALIDATE_EMAIL)!=false){
             return true;
@@ -163,11 +163,7 @@
                             $GLOBALS['title'] = 'Error';
                             $GLOBALS['html'] = "<p class='terms'>Debes Aceptar los <a href='#'>terminos y condiciones</a> de la politica de proteccion de datos. Recibiras confirmacion del registro por correo electronico</p>";
                         }
-                    }/*else{
-                        $GLOBALS['icon'] = 'error';
-                        $GLOBALS['title'] = 'Error';
-                        $GLOBALS['text'] = 'La contraseña no cumple con los parametros requeridos: Más de 8 caracteres, una minúscula, mayuscula, número y caractere especial como minimo';
-                    }*/
+                    }
                 }else{
                     $GLOBALS['icon'] = 'error';
                     $GLOBALS['title'] = 'Error';
