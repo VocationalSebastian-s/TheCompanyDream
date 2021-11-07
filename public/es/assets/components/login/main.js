@@ -1,81 +1,108 @@
+/*SignIn Parametros */
+var emailIn = '';
+var passwordIn = '';
+var btnIn = '';
+/*SignUp Parametros */
+var emailUp = '';
+var passwordUp = '';
+var passwordcheckUp = '';
+var btnUp = '';
+
 function habilitarIn() {
-    var emailIn = document.getElementById('emailIn').value;
-    var passwordIn = document.getElementById('passwordIn').value;
     var btnIn = document.getElementById('submitIn');
-    if (emailIn != '') {
+    if (verifyEmailIn() && verifyPasswordIn()) {
         btnIn.disabled = false;
         btnIn.classList.remove('disabled');
-        if (passwordIn != '') {
-            btnIn.disabled = false;
-            btnIn.classList.remove('disabled');
-            hoveralert("success", "Parametros Correctos");
-        } else {
-            btnIn.disabled = true;
-            btnIn.classList.add('disabled');
-            hoveralert("error", "Contraseña Vacia");
-        }
+        hoveralert("success", "Parametros Correctos");
     } else {
         btnIn.disabled = true;
         btnIn.classList.add('disabled');
-        hoveralert("error", "Correo Vacio");
+    }
+}
+
+function verifyEmailIn() {
+    var emailIn = document.getElementById('emailIn').value;
+    if (emailIn != '') {
+        return true;
+    } else {
+        hoveralert("error", "Correo Vacío");
+        return false;
+    }
+}
+
+function verifyPasswordIn() {
+    var passwordIn = document.getElementById('passwordIn').value;
+    if (passwordIn != '') {
+        return true;
+    } else {
+        hoveralert("error", "Contraseña Vacía");
+        return false;
     }
 }
 
 function habilitarUp() {
-    var emailUp = document.getElementById('emailUp').value;
-    var passwordUp = document.getElementById('passwordUp').value;
-    var passwordcheckUp = document.getElementById('passwordcheckUp').value;
     var btnUp = document.getElementById('submitUp');
-    /*Verificacion de Email */
-    var params = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-    if (emailUp != '' && params.test(emailUp) == true) {
+    if (verifyEmailUp() && verifyPasswordUp()) {
         btnUp.disabled = false;
         btnUp.classList.remove('disabled');
+        hoveralert("success", "Parametros Correctos");
+    } else {
+        btnUp.disabled = true;
+        btnUp.classList.add('disabled');
+    }
+}
+
+function verifyEmailUp() {
+    var emailUp = document.getElementById('emailUp').value;
+    var params = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    if (emailUp != '') {
+        if (params.test(emailUp) == true) {
+            return true;
+        } else {
+            hoveralert("error", "El correo no es correcto");
+            return false;
+        }
+    } else {
+        hoveralert("error", "El correo esta vacío");
+        return false;
+    }
+}
+
+
+function verifyPasswordUp() {
+    var passwordUp = document.getElementById('passwordUp').value;
+    var passwordcheckUp = document.getElementById('passwordcheckUp').value;
+    if (passwordUp.length > 7) {
         if (passwordcheckUp == passwordUp) {
-            btnUp.disabled = false;
-            btnUp.classList.remove('disabled');
             if (/[\d]/.test(passwordUp)) {
-                btnUp.disabled = false;
-                btnUp.classList.remove('disabled');
                 if (/[A-Z]/.test(passwordUp)) {
-                    btnUp.disabled = false;
-                    btnUp.classList.remove('disabled');
                     if (/[a-z]/.test(passwordUp)) {
-                        btnUp.disabled = false;
-                        btnUp.classList.remove('disabled');
                         if (/[\W]/.test(passwordUp)) {
-                            btnUp.disabled = false;
-                            btnUp.classList.remove('disabled');
                             hoveralert("success", "Parametros Correctos");
+                            return true;
                         } else {
                             hoveralert("error", "La contraseña debe tener un caracter especial");
-                            btnUp.disabled = true;
-                            btnUp.classList.add('disabled');
+                            return false;
                         }
                     } else {
                         hoveralert("error", "La contraseña debe tener una minúscula");
-                        btnUp.disabled = true;
-                        btnUp.classList.add('disabled');
+                        return false;
                     }
                 } else {
                     hoveralert("error", "La contraseña debe tener una mayúscula");
-                    btnUp.disabled = true;
-                    btnUp.classList.add('disabled');
+                    return false;
                 }
             } else {
                 hoveralert("error", "La contraseña debe tener un numero");
-                btnUp.disabled = true;
-                btnUp.classList.add('disabled');
+                return false;
             }
         } else {
             hoveralert("error", "Las contraseñas no coinciden");
-            btnUp.disabled = true;
-            btnUp.classList.add('disabled');
+            return false;
         }
     } else {
-        hoveralert("error", "El correo no es correcto");
-        btnUp.disabled = true;
-        btnUp.classList.add('disabled');
+        hoveralert("error", "La contraseñas debe tener 8 caracteres minimo");
+        return false;
     }
 }
 
