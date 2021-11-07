@@ -205,7 +205,7 @@
     </head>
 
     <body>
-        <?php if (!empty($message)): ?>
+        <?php if (!empty($text)): ?>
             <script type="text/javascript">
                 Sweetalert2.fire({
                     icon:"<?php echo($icon) ?>", 
@@ -220,7 +220,7 @@
                     confirmButtonColor:"#1A5276"
                 });
             </script>
-                <?php if ($class=="success"): ?>
+                <?php if ($icon=="success"): ?>
                     <script type="text/javascript">
                         setTimeout(alertFunc, 4000);
                         function alertFunc() {
