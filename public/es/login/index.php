@@ -211,6 +211,7 @@
                     icon:"<?php echo($icon) ?>", 
                     title:"<?php echo($title)?>", 
                     text:"<?php echo($text)?>",
+                    html:"<?php echo($html)?>",
                     imageUrl:"<?php echo($img)?>",
                     timer:"5000",
                     timerProgressBar:"True",
