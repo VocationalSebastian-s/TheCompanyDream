@@ -163,6 +163,19 @@
             $GLOBALS['class'] = 'error';
         }
     }
+    echo '<script type="text/javascript">
+    Sweetalert2.fire({
+        icon:"<?php echo($class) ?>", 
+        title:"<?php echo($class)?>", 
+        text:"<?php echo($message)?>",
+        timer:"3000",
+        timerProgressBar:"True",
+        allowOutsideClick:"True",
+        allowEscapeKey:"True",
+        confirmButtonText:"Aceptar",
+        confirmButtonColor:"#1A5276"
+    });
+</script>';
 ?>
 <!DOCTYPE html>
 <html>
