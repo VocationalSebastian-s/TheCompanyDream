@@ -30,11 +30,6 @@
     function verifyemail($email){
         if(filter_var($email, FILTER_VALIDATE_EMAIL)!=false){
             return true;
-        }else{
-            $GLOBALS['icon'] = 'error';
-            $GLOBALS['title'] = 'Error';
-            $GLOBALS['text'] = 'El correo no cumple con los parametros';
-            return false;
         }
     }
 
@@ -168,11 +163,11 @@
                             $GLOBALS['title'] = 'Error';
                             $GLOBALS['html'] = "<p class='terms'>Debes Aceptar los <a href='#'>terminos y condiciones</a> de la politica de proteccion de datos. Recibiras confirmacion del registro por correo electronico</p>";
                         }
-                    }else{
+                    }/*else{
                         $GLOBALS['icon'] = 'error';
                         $GLOBALS['title'] = 'Error';
                         $GLOBALS['text'] = 'La contraseña no cumple con los parametros requeridos: Más de 8 caracteres, una minúscula, mayuscula, número y caractere especial como minimo';
-                    }
+                    }*/
                 }else{
                     $GLOBALS['icon'] = 'error';
                     $GLOBALS['title'] = 'Error';
