@@ -205,7 +205,7 @@
     </head>
 
     <body>
-        <?php if (!empty($text)): ?>
+        <?php if (!empty($text) || !empty($icon)): ?>
             <script type="text/javascript">
                 Sweetalert2.fire({
                     icon:"<?php echo($icon) ?>", 
