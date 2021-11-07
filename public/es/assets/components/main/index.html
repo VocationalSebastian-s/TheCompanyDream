@@ -344,17 +344,25 @@ follow_the_signs
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $records = $con->prepare('SELECT * FROM users');
+                                        $records = $conex->prepare('SELECT * FROM users');
                                         $records->execute();
                                         while ($results = $records->fetch(PDO::FETCH_ASSOC)) { ?>
                                         <tr>
-                                            <td><?php echo $results['id']; ?></td>
-                                            <td><?php echo $results['email']; ?></td>
-                                            <td><?php echo $results['name']; ?></td>
-                                            <td><?php echo $results['lastname']; ?></td>
                                             <td>
-                                            <a href="?id=<?php echo $results['id']; ?>"><button type='button' class="btn btn-success">Modificar</a>
-                                            <a href="?id=<?php echo $results['id']; ?>"><button type='button' class="btn btn-danger">Eliminar</a>
+                                                <?php echo $results['id']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $results['email']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $results['name']; ?>
+                                            </td>
+                                            <td>
+                                                <?php echo $results['lastname']; ?>
+                                            </td>
+                                            <td>
+                                                <a href="?id=<?php echo $results['id']; ?>"><button type='button' class="btn btn-success">Modificar</a>
+                                                <a href="?id=<?php echo $results['id']; ?>"><button type='button' class="btn btn-danger">Eliminar</a>
                                             </td>
                                         </tr>
                                         <?php } ?>
