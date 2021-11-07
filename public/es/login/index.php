@@ -218,7 +218,7 @@
             </script>
                 <?php if ($icon=="success"): ?>
                     <script type="text/javascript">
-                        setTimeout(alertFunc, 4000);
+                        setTimeout(alertFunc, 6000);
                         function alertFunc() {
                             location.replace("../main");
                         }
