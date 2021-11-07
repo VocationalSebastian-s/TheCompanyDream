@@ -121,7 +121,7 @@
                             if ($datos->execute()) {
                                 try {
                                     $results = $datos->fetch(PDO::FETCH_ASSOC);
-                                    if ($results['email'] == $_POST['email']) {
+                                    if ($results['email'] == false) {
                                         $repeated = true;
                                     }else{
                                         $repeated = false;
@@ -142,7 +142,8 @@
                                 $datos->bindParam(':name', $_POST['name']);
                                 $datos->bindParam(':lastname', $_POST['name']);
                                 $datos->bindParam(':email', $_POST['email']);
-                                $datos->bindParam(':password', password_hash($_POST['password'], PASSWORD_BCRYPT)); /*Cifrar contraseña en hash BCRYPT */
+                                $password=password_hash($_POST['password'], PASSWORD_BCRYPT);
+                                $datos->bindParam(':password', $password); /*Cifrar contraseña en hash BCRYPT */
                                 if ($datos->execute()) {
                                     $GLOBALS['icon'] = 'success';
                                     $GLOBALS['title'] = 'Éxito';
