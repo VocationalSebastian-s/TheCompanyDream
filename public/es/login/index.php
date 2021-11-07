@@ -218,7 +218,7 @@
                     allowOutsideClick:"True",
                     allowEscapeKey:"True",
                     confirmButtonText:"Aceptar",
-                    confirmButtonColor:"#1A5276"
+                    confirmButtonColor:"#1A5276",
                 });
             </script>
                 <?php if ($icon=="success"): ?>
