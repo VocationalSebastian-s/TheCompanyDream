@@ -9,9 +9,11 @@
             <?php include('../../assets/utils/style.css') ?>
         </style>
         <link rel="stylesheet" href="../assets/utils/header/style.css">
+        <link rel="stylesheet" href="../assets/components/home/style.css">
     </head>
     <body>
         <!---Header-->
         <?php include('../assets/utils/header/index.html') ?>
+        <?php include('../assets/components/home/index.html') ?>
     </body>
 </html>
