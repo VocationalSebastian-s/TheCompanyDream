@@ -212,7 +212,7 @@
                     title:"<?php echo($title)?>", 
                     text:"<?php echo($text)?>",
                     imageUrl:"<?php echo($img)?>",
-                    timer:"3000",
+                    timer:"5000",
                     timerProgressBar:"True",
                     allowOutsideClick:"True",
                     allowEscapeKey:"True",
