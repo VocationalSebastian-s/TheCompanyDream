@@ -173,7 +173,7 @@
     font-weight: 500;
 }
 
-.initiation .container .formBx form input {
+.initiation .container .formBx .form form input {
     width: 100%;
     margin-bottom: 20px;
     padding: 10px;
@@ -182,7 +182,7 @@
     border: 1px solid #333;
 }
 
-.initiation .container .formBx form select {
+.initiation .container .formBx .form form select {
     width: 100%;
     margin-bottom: 20px;
     padding: 10px;
@@ -191,21 +191,18 @@
     border: 1px solid #333;
 }
 
-.initiation .container .formBx form select:required:invalid {
+.initiation .container .formBx .form form select:required:invalid {
     color: #666;
 }
 
-.initiation .container .formBx form option[value=""][disabled] {
+.initiation .container .formBx .form form option[value=""][disabled] {
     display: none;
 }
 
-.initiation .container .formBx .form form input[type="checkbox"] {
-    position: relative;
-    width: 5%;
-}
+.initiation .container .formBx .form form input[type="checkbox"] {}
 
-.initiation .container .formBx .form form input[id="submitUp"],
-.initiation .container .formBx .form form input[id="submitIn"] {
+.initiation .container .formBx .form form .inputs input[id="submitUp"],
+.initiation .container .formBx .form form .inputs input[id="submitIn"] {
     max-width: 100px;
     border-color: #363636;
     background: #1A5276;

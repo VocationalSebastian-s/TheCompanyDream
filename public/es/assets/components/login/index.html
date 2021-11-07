@@ -14,26 +14,30 @@
             <div class="form signinForm">
                 <form action="index.php" method="post">
                     <h3>Iniciar sesión</h3>
-                    <input id="actionIn" type="hidden" name="action" value="signin" required>
-                    <input id="emailIn" onkeyup="habilitar()" type="email" name="email" placeholder="Correo" maxlength="120" required>
-                    <input id="passwordIn" onkeyup="habilitar()" type="password" name="password" placeholder="Contraseña" maxlength="20" required>
-                    <input id="submitIn" type="submit" value="Ingresar">
-                    <a href="#" class="forgot">¿Olvidaste Tu Contraseña?</a>
+                    <div class="inputs">
+                        <input id="actionIn" type="hidden" name="action" value="signin" required>
+                        <input id="emailIn" onkeyup="habilitar()" type="email" name="email" placeholder="Correo" maxlength="120" required>
+                        <input id="passwordIn" onkeyup="habilitar()" type="password" name="password" placeholder="Contraseña" maxlength="20" required>
+                        <input id="submitIn" type="submit" value="Ingresar">
+                        <a href="#" class="forgot">¿Olvidaste Tu Contraseña?</a>
+                    </div>
                 </form>
             </div>
             <div class="form signupForm">
                 <form action="index.php" method="post">
                     <h3>Inscribirse</h3>
-                    <input id="actionUp" type="hidden" name="action" value="signup" required>
-                    <input id="nameUp" onkeyup="habilitar()" type="text" name="name" placeholder="Nombre Y Apellido(s)" maxlength="14" required>
-                    <input id="emailUp" onkeyup="habilitar()" type="email" name="email" placeholder="Correo" maxlength="120" required>
-                    <input id="passwordUp" onkeyup="habilitar()" type="password" name="password" placeholder="Contraseña" maxlength="20" required>
-                    <input id="passwordcheckUp" onkeyup="habilitar()" type="password" name="passwordcheck" placeholder="Verificar Contraseña" maxlength="20" required>
-                    <select id="typeUp" onkeyup="habilitar()" name="type" required>
-                        <option value="">Seleccione Su Cargo</option>
-                        <option value="0">Empleado</option>
-                        <option value="1">Jefe</option>
-                    </select>
+                    <div class="inputs">
+                        <input id="actionUp" type="hidden" name="action" value="signup" required>
+                        <input id="nameUp" onkeyup="habilitar()" type="text" name="name" placeholder="Nombre Y Apellido(s)" maxlength="14" required>
+                        <input id="emailUp" onkeyup="habilitar()" type="email" name="email" placeholder="Correo" maxlength="120" required>
+                        <input id="passwordUp" onkeyup="habilitar()" type="password" name="password" placeholder="Contraseña" maxlength="20" required>
+                        <input id="passwordcheckUp" onkeyup="habilitar()" type="password" name="passwordcheck" placeholder="Verificar Contraseña" maxlength="20" required>
+                        <select id="typeUp" onkeyup="habilitar()" name="type" required>
+                            <option value="">Seleccione Su Cargo</option>
+                            <option value="0">Empleado</option>
+                            <option value="1">Jefe</option>
+                        </select>
+                    </div>
                     <label><input type="checkbox" name="terms" required>Acepto los <a>terminos y condiciones</a> de la politica de proteccion de datos.<br>Recibiras confirmacion del registro por correo electronico</label>
                     <input id="submitUp" type="submit" value="Registrar">
                 </form>
