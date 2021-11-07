@@ -25,8 +25,8 @@
                 <form action="index.php" method="post">
                     <h3>Inscribirse</h3>
                     <input id="actionUp" type="hidden" name="action" value="signup" required>
-                    <input id="nameUp" onkeyup="habilitar()" type="text" name="name" placeholder="Nombre Y Apellido(s)" maxlength="14" value="<?php echo($_POST['name'])?>" required>
-                    <input id="emailUp" onkeyup="habilitar()" type="email" name="email" placeholder="Correo" maxlength="120" value="<?php echo($_POST['email'])?>" required>
+                    <input id="nameUp" onkeyup="habilitar()" type="text" name="name" placeholder="Nombre Y Apellido(s)" maxlength="14" value="<?php if(!empty($_POST['name'])){ echo($_POST['name']); }?>" required>
+                    <input id="emailUp" onkeyup="habilitar()" type="email" name="email" placeholder="Correo" maxlength="120" value="<?php if(!empty($_POST['email'])){ echo($_POST['email']); }?>" required>
                     <input id="passwordUp" onkeyup="habilitar()" type="password" name="password" placeholder="Contraseña" maxlength="20" required>
                     <input id="passwordcheckUp" onkeyup="habilitar()" type="password" name="passwordcheck" placeholder="Verificar Contraseña" maxlength="20" required>
                     <select id="typeUp" onkeyup="habilitar()" name="type" required>
