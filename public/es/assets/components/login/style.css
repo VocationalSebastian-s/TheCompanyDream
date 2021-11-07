@@ -216,6 +216,7 @@
 
 .initiation .container .formBx .form form .terms {
     white-space: nowrap;
+    margin: auto;
 }
 
 .initiation .container .formBx .form form .terms input {
