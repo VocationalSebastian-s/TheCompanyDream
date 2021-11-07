@@ -201,9 +201,6 @@
 
 .initiation .container .formBx .form form input[type="checkbox"] {
     width: 5%;
-    margin-bottom: 0 px;
-    padding: 10 px;
-    outline: 0px;
 }
 
 .initiation .container .formBx .form form input[id="submitUp"],
