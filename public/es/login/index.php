@@ -1,14 +1,19 @@
 <?php
     require '../../../server/connection/conexion.php';
-
-    $message = '';
-    $class = '';
+    
+    /*Sweet Alert -> Parametros */
+    $title='';
+    $text = '';
+    $html='';
+    $icon = '';
+    $img='';
     $active=true;
 
     session_start();
     if (isset($_SESSION['id'])) {
-        $message = 'Ya has inciado sesión';
-        $class = 'success';
+        $GLOBALS['icon'] = 'success';
+        $GLOBALS['title'] = 'Éxito';
+        $GLOBALS['text'] = 'Ya has inciado sesión';
         $active=false;
     }
 
@@ -26,8 +31,9 @@
         if(filter_var($email, FILTER_VALIDATE_EMAIL)!=false){
             return true;
         }else{
-            $GLOBALS['message'] = 'Error, el correo no cumple con los parametros';
-            $GLOBALS['class'] = 'error';
+            $GLOBALS['icon'] = 'error';
+            $GLOBALS['title'] = 'Error';
+            $GLOBALS['text'] = 'El correo no cumple con los parametros';
             return false;
         }
     }
@@ -40,28 +46,33 @@
                         if((preg_match_all("/[\W]/", $password))>0){
                             return true;
                         }else{
-                            $GLOBALS['message'] = 'La contraseña debe tener al menos un caracter especial';
-                            $GLOBALS['class'] = 'error';
+                            $GLOBALS['icon'] = 'error';
+                            $GLOBALS['title'] = 'Error';
+                            $GLOBALS['text'] = 'La contraseña debe tener al menos un caracter especial';
                             return false;
                         }
                     }else{
-                        $GLOBALS['message'] = 'La contraseña debe tener al menos una minuscula';
-                        $GLOBALS['class'] = 'error';
+                        $GLOBALS['icon'] = 'error';
+                        $GLOBALS['title'] = 'Error';
+                        $GLOBALS['text'] = 'La contraseña debe tener al menos una minuscula';
                         return false;
                     }
                 }else{
-                    $GLOBALS['message'] = 'La contraseña debe tener al menos una mayuscula';
-                    $GLOBALS['class'] = 'error';
+                    $GLOBALS['icon'] = 'error';
+                    $GLOBALS['title'] = 'Error';
+                    $GLOBALS['text'] = 'La contraseña debe tener al menos una mayuscula';
                     return false;
                 }
             }else{
-                $GLOBALS['message'] = 'La contraseña debe tener al menos un numero';
-                $GLOBALS['class'] = 'error';
+                $GLOBALS['icon'] = 'error';
+                $GLOBALS['title'] = 'Error';
+                $GLOBALS['text'] = 'La contraseña debe tener al menos un numero';
                 return false;
             }
         }else{
-            $GLOBALS['message'] = 'La contraseña debe ser minimo de 8 caracteres';
-            $GLOBALS['class'] = 'error';
+            $GLOBALS['icon'] = 'error';
+            $GLOBALS['title'] = 'Error';
+            $GLOBALS['text'] = 'La contraseña debe ser minimo de 8 caracteres';
             return false;
         }
     }
@@ -77,23 +88,28 @@
                 if($_POST['email']==$results['email']) {
                     if (password_verify($_POST['password'], $results['password'])) {
                         $_SESSION['id'] = $results['id']; /*Pasar datos a el sistema de seguridad*/
-                        $GLOBALS['message'] = 'Se ha iniciado sesión correctamente';
-                        $GLOBALS['class'] = 'success';
+                        $GLOBALS['icon'] = 'success';
+                        $GLOBALS['title'] = 'Éxito';
+                        $GLOBALS['text'] = 'Se ha iniciado sesión correctamente';
                     } else {
-                        $GLOBALS['message'] = 'Error, la contraseña es incorrecta';
-                        $GLOBALS['class'] = 'error';
+                        $GLOBALS['icon'] = 'error';
+                        $GLOBALS['title'] = 'Error';
+                        $GLOBALS['text'] = 'La contraseña es incorrecta';
                     }
                 }else{
-                    $GLOBALS['message'] = 'Error, el correo no existe';
-                    $GLOBALS['class'] = 'error';
+                    $GLOBALS['icon'] = 'error';
+                    $GLOBALS['title'] = 'Error';
+                    $GLOBALS['text'] = 'El correo no existe';
                 }
-            } else {
-                $GLOBALS['message'] = 'Error, no se pudo encontrar este correo';
-                $GLOBALS['class'] = 'error';
+            }else{
+                $GLOBALS['icon'] = 'error';
+                $GLOBALS['title'] = 'Error';
+                $GLOBALS['text'] = 'No se pudo encontrar este correo';
             }
-        } else {
-            $GLOBALS['message'] = 'Error, faltan datos para Iniciar sesión';
-            $GLOBALS['class'] = 'error';
+        }else{
+            $GLOBALS['icon'] = 'error';
+            $GLOBALS['title'] = 'Error';
+            $GLOBALS['text'] = 'Faltan datos para Iniciar sesión';
         }
     }
 
@@ -112,16 +128,18 @@
                                     $results = $datos->fetch(PDO::FETCH_ASSOC);
                                     if ($results['email'] == $_POST['email']) {
                                         $repeated = true;
-                                    } else {
+                                    }else{
                                         $repeated = false;
                                     }
                                 } catch (Exception) {
-                                    $GLOBALS['message'] = 'Error, al verificar existencia de la cuenta';
-                                    $GLOBALS['class'] = 'error';
+                                    $GLOBALS['icon'] = 'error';
+                                    $GLOBALS['title'] = 'Error';
+                                    $GLOBALS['text'] = 'No se pudo verificar la existencia de la cuenta';
                                 }
-                            } else {
-                                $GLOBALS['message'] = 'Error, al verificar existencia de la cuenta';
-                                $GLOBALS['class'] = 'error';
+                            }else{
+                                $GLOBALS['icon'] = 'error';
+                                $GLOBALS['title'] = 'Error';
+                                $GLOBALS['text'] = 'No se pudo verificar la existencia de la cuenta';
                             }
                             if ($repeated == false) {
                                 $sql = 'INSERT INTO users (name,lastname,email,password) values (:name,:lastname,:email,:password)';
@@ -131,51 +149,47 @@
                                 $datos->bindParam(':email', $_POST['email']);
                                 $datos->bindParam(':password', password_hash($_POST['password'], PASSWORD_BCRYPT)); /*Cifrar contraseña en hash BCRYPT */
                                 if ($datos->execute()) {
-                                    $message = 'La cuenta ha sido creada con exito';
-                                    $GLOBALS['class'] = 'success';
+                                    $GLOBALS['icon'] = 'success';
+                                    $GLOBALS['title'] = 'Éxito';
+                                    $GLOBALS['text'] = 'La cuenta ha sido creada con exito';
                                     signin($conexion);
-                                } else {
-                                    $GLOBALS['message'] = 'Error, la cuenta no se pudo crear';
-                                    $GLOBALS['class'] = 'error';
+                                }else{
+                                    $GLOBALS['icon'] = 'error';
+                                    $GLOBALS['title'] = 'Error';
+                                    $GLOBALS['text'] = 'La cuenta no se pudo crear';
                                 }
                             } elseif ($repeated == true) {
-                                $GLOBALS['message'] = 'Error, el correo ' . $_POST['email'] . ' ya existe';
-                                $GLOBALS['class'] = 'error';
+                                $GLOBALS['icon'] = 'error';
+                                $GLOBALS['title'] = 'Error';
+                                $GLOBALS['text'] = 'El correo ' . $_POST['email'] . ' ya existe';
                             }
-                        } else {
-                            $GLOBALS['message'] = 'Debes Aceptar los terminos y condiciones de la politica de proteccion de datos.Recibiras confirmacion del registro por correo electronico';
-                            $GLOBALS['class'] = 'error';
+                        }else{
+                            $GLOBALS['icon'] = 'error';
+                            $GLOBALS['title'] = 'Error';
+                            $GLOBALS['html'] = '<p>Debes Aceptar los <a href="#">terminos y condiciones</a> de la politica de proteccion de datos.Recibiras confirmacion del registro por correo electronico</p>';
                         }
-                    } else {
-                        $GLOBALS['message'] = 'Error, la contraseña no cumple con los parametros requeridos: Más de 8 caracteres, una minúscula, mayuscula, número y caractere especial como minimo';
-                        $GLOBALS['class'] = 'error';
+                    }else{
+                        $GLOBALS['icon'] = 'error';
+                        $GLOBALS['title'] = 'Error';
+                        $GLOBALS['text'] = 'La contraseña no cumple con los parametros requeridos: Más de 8 caracteres, una minúscula, mayuscula, número y caractere especial como minimo';
                     }
-                } else {
-                    $GLOBALS['message'] = 'Error, las contraseñas no coinciden';
-                    $GLOBALS['class'] = 'error';
+                }else{
+                    $GLOBALS['icon'] = 'error';
+                    $GLOBALS['title'] = 'Error';
+                    $GLOBALS['text'] = 'Las contraseñas no coinciden';
                 }
             }else{
-                $GLOBALS['message'] = 'Error, el correo no cumple con los parametros';
-                $GLOBALS['class'] = 'error';
+                $GLOBALS['icon'] = 'error';
+                $GLOBALS['title'] = 'Error';
+                $GLOBALS['text'] = 'El correo no cumple con los parametros necesarios';
+                $GLOBALS['img'] = '../assets/components/login/src/images/estructuraemail.jpg';
             }
-        } else {
-            $GLOBALS['message'] = 'Error, faltan datos para Registrarse';
-            $GLOBALS['class'] = 'error';
+        }else{
+            $GLOBALS['icon'] = 'error';
+            $GLOBALS['title'] = 'Error';
+            $GLOBALS['text'] = 'Faltan datos para Registrarse';
         }
     }
-    echo '<html><script type="text/javascript">
-    Sweetalert2.fire({
-        icon:"<?php echo($class) ?>", 
-        title:"<?php echo($class)?>", 
-        text:"<?php echo($message)?>",
-        timer:"3000",
-        timerProgressBar:"True",
-        allowOutsideClick:"True",
-        allowEscapeKey:"True",
-        confirmButtonText:"Aceptar",
-        confirmButtonColor:"#1A5276"
-    });
-</script></html>';
 ?>
 <!DOCTYPE html>
 <html>
@@ -194,9 +208,10 @@
         <?php if (!empty($message)): ?>
             <script type="text/javascript">
                 Sweetalert2.fire({
-                    icon:"<?php echo($class) ?>", 
-                    title:"<?php echo($class)?>", 
-                    text:"<?php echo($message)?>",
+                    icon:"<?php echo($icon) ?>", 
+                    title:"<?php echo($title)?>", 
+                    text:"<?php echo($text)?>",
+                    imageUrl:"<?php echo($img)?>",
                     timer:"3000",
                     timerProgressBar:"True",
                     allowOutsideClick:"True",
