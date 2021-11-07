@@ -228,6 +228,11 @@
     color: #1A5276;
 }
 
+.terms a {
+    text-decoration: none;
+    color: #1A5276;
+}
+
 .initiation .container .formBx .form form .forgot {
     color: #333;
     transition: 0.5s;

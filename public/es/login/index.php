@@ -26,7 +26,7 @@
             signup($conex);
         }
     }
-    
+    // Verificacion de correo con funcion '/^[A-z0-9\\._-]+@[A-z0-9][A-z0-9-]*(\\.[A-z0-9_-]+)*\\.([A-z]{2,6})$/' //
     function verifyemail($email){
         if(filter_var($email, FILTER_VALIDATE_EMAIL)!=false){
             return true;
@@ -166,7 +166,7 @@
                         }else{
                             $GLOBALS['icon'] = 'error';
                             $GLOBALS['title'] = 'Error';
-                            $GLOBALS['html'] = '<p>Debes Aceptar los <a href="#">terminos y condiciones</a> de la politica de proteccion de datos.Recibiras confirmacion del registro por correo electronico</p>';
+                            $GLOBALS['html'] = "<p class='terms'>Debes Aceptar los <a href='#'>terminos y condiciones</a> de la politica de proteccion de datos. Recibiras confirmacion del registro por correo electronico</p>";
                         }
                     }else{
                         $GLOBALS['icon'] = 'error';
@@ -205,7 +205,7 @@
     </head>
 
     <body>
-        <?php if (!empty($text) || !empty($icon)): ?>
+        <?php if (!empty($icon)): ?>
             <script type="text/javascript">
                 Sweetalert2.fire({
                     icon:"<?php echo($icon) ?>", 
