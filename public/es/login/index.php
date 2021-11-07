@@ -122,9 +122,9 @@
                                 try {
                                     $results = $datos->fetch(PDO::FETCH_ASSOC);
                                     if ($results['email'] == false) {
-                                        $repeated = true;
-                                    }else{
                                         $repeated = false;
+                                    }else{
+                                        $repeated = true;
                                     }
                                 } catch (Exception) {
                                     $GLOBALS['icon'] = 'error';
