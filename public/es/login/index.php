@@ -179,7 +179,6 @@
                     $GLOBALS['text'] = 'Las contraseñas no coinciden';
                 }
             }else{
-                $GLOBALS['icon'] = 'error';
                 $GLOBALS['title'] = 'Error';
                 $GLOBALS['text'] = 'El correo no cumple con los parametros necesarios';
                 $GLOBALS['img'] = '../assets/components/login/src/images/estructuraemail.jpg';
@@ -205,7 +204,7 @@
     </head>
 
     <body>
-        <?php if (!empty($icon)): ?>
+        <?php if (!empty($icon) || !empty($title) || !empty($text)): ?>
             <script type="text/javascript">
                 Sweetalert2.fire({
                     icon:"<?php echo($icon) ?>", 
