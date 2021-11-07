@@ -214,6 +214,10 @@
     -o-transition: 0.8s ease-in-out;
 }
 
+.initiation .container .formBx .form form .terms {
+    width: 20%;
+}
+
 .initiation .container .formBx .form form .forgot {
     color: #333;
     transition: 0.5s;
