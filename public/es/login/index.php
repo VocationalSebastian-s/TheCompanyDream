@@ -121,10 +121,14 @@
                             if ($datos->execute()) {
                                 try {
                                     $results = $datos->fetch(PDO::FETCH_ASSOC);
-                                    if ($results['email'] == false) {
-                                        $repeated = false;
+                                    if (is_array($results)) {
+                                        if ($results['email'] == $_POST['email']) {
+                                            $repeated = true;
+                                        } else {
+                                            $repeated = false;
+                                        }
                                     }else{
-                                        $repeated = true;
+                                        $repeated=false;
                                     }
                                 } catch (Exception) {
                                     $GLOBALS['icon'] = 'error';
