@@ -215,6 +215,10 @@
 }
 
 .initiation .container .formBx .form form .terms {
+    outline: none;
+}
+
+.initiation .container .formBx .form form .terms input {
     width: 20%;
 }
 
