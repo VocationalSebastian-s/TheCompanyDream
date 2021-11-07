@@ -200,6 +200,7 @@
 }
 
 .initiation .container .formBx .form form input[type="checkbox"] {
+    position: relative;
     width: 5%;
 }
 
