@@ -178,7 +178,7 @@
     margin-bottom: 20px;
     padding: 10px;
     outline: none;
-    font-size: 20px;
+    font-size: 16px;
     border: 1px solid #333;
     font-family: sans-serif;
 }
@@ -205,6 +205,11 @@
     outline: none;
     font-size: 16px;
     border: 1px solid #333;
+    color: #000
+}
+
+.initiation .container .formBx .form form select option {
+    color: #000;
 }
 
 .initiation .container .formBx .form form select:required:invalid {
