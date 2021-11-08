@@ -184,17 +184,17 @@
 }
 
 .initiation .container .formBx .form form input::placeholder {
-    font-family: "Font Awesome 5 Free";
+    font-family: sans-serif, "Font Awesome 5 Free";
     font-weight: 900;
 }
 
 .initiation .container .formBx .form form select {
-    font-family: "Font Awesome 5 Free";
+    font-family: sans-serif, "Font Awesome 5 Free";
     font-weight: 900;
 }
 
 .initiation .container .formBx .form form select option {
-    font-family: "Font Awesome 5 Free";
+    font-family: sans-serif, "Font Awesome 5 Free";
     font-weight: 900;
 }
 
