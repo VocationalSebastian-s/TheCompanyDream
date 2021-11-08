@@ -81,19 +81,19 @@ function verifyPasswordUp() {
                             hoveralert("success", "Parametros Correctos");
                             return true;
                         } else {
-                            hoveralert("error", "La contraseña debe tener un caracter especial");
+                            hoveralert("error", "La contraseña debe tener mínimo un caracter especial");
                             return false;
                         }
                     } else {
-                        hoveralert("error", "La contraseña debe tener una minúscula");
+                        hoveralert("error", "La contraseña debe tener mínimo una minúscula");
                         return false;
                     }
                 } else {
-                    hoveralert("error", "La contraseña debe tener una mayúscula");
+                    hoveralert("error", "La contraseña debe tener mínimo una mayúscula");
                     return false;
                 }
             } else {
-                hoveralert("error", "La contraseña debe tener un numero");
+                hoveralert("error", "La contraseña debe tener mínimo un numero");
                 return false;
             }
         } else {
@@ -101,7 +101,7 @@ function verifyPasswordUp() {
             return false;
         }
     } else {
-        hoveralert("error", "La contraseñas debe tener 8 caracteres minimo");
+        hoveralert("error", "La contraseñas debe tener mínimo 8 caracteres");
         return false;
     }
 }

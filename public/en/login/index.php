@@ -85,7 +85,7 @@
                     $datos->bindParam(':email', $_POST['email']);
                     $datos->bindParam(':password', password_hash($_POST['password'], PASSWORD_BCRYPT)); /*Cifrar contraseña en hash BCRYPT */
                     if ($datos->execute()) {
-                        $message = 'La cuenta ha sido creada con exito';
+                        $message = 'La cuenta ha sido creada con éxito';
                         $GLOBALS['class'] = 'success';
                         signin($conexion);
                     } else {
@@ -101,7 +101,7 @@
                 $GLOBALS['class'] = 'error';
             }
         } else {
-            $GLOBALS['message'] = 'Error, faltan datos para Registrarse';
+            $GLOBALS['message'] = 'Error, faltan datos para registrarse';
             $GLOBALS['class'] = 'error';
         }
     }
