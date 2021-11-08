@@ -203,6 +203,7 @@
 .initiation .container .formBx .form form input[id="emailIn"]::placeholder {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
+    content: "\f0e0";
 }
 
 .initiation .container .formBx .form form input[id="passwordUp"]::placeholder,
@@ -210,6 +211,7 @@
 .initiation .container .formBx .form form input[id="passwordIn"]::placeholder {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
+    content: "\f13e";
 }
 
 .initiation .container .formBx .form form input[id="submitUp"],
