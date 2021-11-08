@@ -188,8 +188,8 @@
     -o-transition: 0.4 ease all;
 }
 
-.initiation .container .formBx .form form input:hover {
-    border: 1px solid #1A5276;
+.initiation .container .formBx .form form input:focus {
+    border: 3px solid #1A5276;
 }
 
 .initiation .container .formBx .form form input::placeholder {
