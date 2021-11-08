@@ -183,6 +183,10 @@
     font-family: sans-serif;
 }
 
+.initiation .container .formBx .form form input:focus {
+    border: 1px solid #1A5276;
+}
+
 .initiation .container .formBx .form form input::placeholder {
     font-family: sans-serif, "Font Awesome 5 Free";
     font-weight: 700;
