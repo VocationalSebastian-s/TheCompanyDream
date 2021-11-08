@@ -32,7 +32,28 @@
             return true;
         }
     }
+    function name($name){
+        $nameC=explode(" ",$name);
+        if(count($nameC)==1){
+            $result=array($nameC[0],'');
+            return $result;
+        } elseif (count($nameC)==2){
+            $result=array($nameC[0],$nameC[1]);
+            return $result;
+        }elseif (count($nameC)==3){
+            $result=array($nameC[0],$nameC[1].' '.$nameC[2]);
+            return $result;
+        }
+        elseif (count($nameC)==4){
+            $result=array($nameC[0].' '.$nameC[1],$nameC[2].' '.$nameC[3]);
+            return $result;
 
+        }else{
+            $result=array('','');
+            return $result;
+        }
+    }
+    
     function verifypassword($password){
         if((strlen($password))>7){
             if((preg_match_all("/[\d]/", $password))>0){
@@ -116,11 +137,11 @@
 
     function signup($conexion)
     {
-        if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordcheck'])) {
+        if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordcheck'])&&!empty($_POST['type'])) {
             if (verifyemail($_POST['email'])==1) {
                 if ($_POST['password'] == $_POST['passwordcheck']) {
                     if (verifypassword($_POST['password'])==1) {
-                        if (!empty($_POST['terms'])) {
+                        if ($_POST['terms']=="yes") {
                             $sql = 'SELECT email FROM users WHERE email = :email';
                             $datos = $conexion->prepare($sql);
                             $datos->bindParam(':email', $_POST['email']);
@@ -147,12 +168,30 @@
                                 $GLOBALS['text'] = 'No se pudo verificar la existencia de la cuenta';
                             }
                             if ($repeated == false) {
-                                $sql = 'INSERT INTO usuarios (name,lastname,email,password) values (:name,:lastname,:email,:password)';
+                                $sql = 'INSERT INTO usuarios (id,name,lastname,direction,telephone,email,password,type,img,role,company) values (:id,:name,:lastname,:direction,:telephone,:email,:password,:type,:img,:role,:company)';
                                 $datos = $conexion->prepare($sql);
+                                /*Variables */
+                                $id='12';
+                                $temp=name($_POST['name']);
+                                $name=$temp[0];
+                                $lastname=$temp[1];
+                                $direction='';
+                                $telephone='';
+                                $email=$_POST['email'];
+                                $password=password_hash($_POST['password'], PASSWORD_BCRYPT);
+                                if($_POST['type']<2 && $_POST['type']>-1){
+                                    $type=$_POST['type'];
+                                }else{
+                                    $type=0;
+                                }
+                                $img='user.png';
+                                $role='';
+                                $company='';
+                                /*Pasar Parametros al sql */
+                                $datos->bindParam(':id', $_POST['name']);
                                 $datos->bindParam(':name', $_POST['name']);
                                 $datos->bindParam(':lastname', $_POST['name']);
                                 $datos->bindParam(':email', $_POST['email']);
-                                $password=password_hash($_POST['password'], PASSWORD_BCRYPT);
                                 $datos->bindParam(':password', $password); /*Cifrar contraseña en hash BCRYPT */
                                 if ($datos->execute()) {
                                     $GLOBALS['icon'] = 'success';
