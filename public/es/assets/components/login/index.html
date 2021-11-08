@@ -15,8 +15,8 @@
                 <form action="index.php" method="post">
                     <h3>Iniciar sesión</h3>
                     <input id="actionIn" type="hidden" name="action" value="signin" required>
-                    <input id="emailIn" onblur="verifyEmailIn()" type="email" name="email" placeholder="Correo" maxlength="120" value="<?php if(!empty($_POST['email'])){ echo($_POST['email']); }?>" required>
-                    <input id="passwordIn" onblur="verifyPasswordIn()" type="password" name="password" placeholder="Contraseña" maxlength="20" required>
+                    <input id="emailIn" onblur="verifyEmailIn()" type="email" name="email" placeholder=' Correo' maxlength="120" value="<?php if(!empty($_POST['email'])){ echo($_POST['email']); }?>" required>
+                    <input id="passwordIn" onblur="verifyPasswordIn()" type="password" name="password" placeholder=" Contraseña" maxlength="20" required>
                     <a onmouseenter="habilitarIn()">
                         <input id="submitIn" class="disabled" type="submit" value="Ingresar" disabled>
                     </a>
@@ -28,13 +28,13 @@
                     <h3>Inscribirse</h3>
                     <input id="actionUp" type="hidden" name="action" value="signup" required>
                     <input id="nameUp" type="text" name="name" placeholder="Nombre Y Apellido(s)" maxlength="14" value="<?php if(!empty($_POST['name'])){ echo($_POST['name']); }?>" required>
-                    <input id="emailUp" onblur="verifyEmailUp()" type="email" name="email" placeholder="Correo" maxlength="120" value="<?php if(!empty($_POST['email'])){ echo($_POST['email']); }?>" required>
-                    <input id="passwordUp" type="password" name="password" placeholder="Contraseña" maxlength="20" required>
-                    <input id="passwordcheckUp" onblur="verifyPasswordUp()" type="password" name="passwordcheck" placeholder="Verificar Contraseña" maxlength="20" required>
+                    <input id="emailUp" onblur="verifyEmailUp()" type="email" name="email" placeholder=" Correo" maxlength="120" value="<?php if(!empty($_POST['email'])){ echo($_POST['email']); }?>" required>
+                    <input id="passwordUp" type="password" name="password" placeholder=" Contraseña" maxlength="20" required>
+                    <input id="passwordcheckUp" onblur="verifyPasswordUp()" type="password" name="passwordcheck" placeholder=" Verificar Contraseña" maxlength="20" required>
                     <select id="typeUp" name="type" required>
-                        <option value="">Seleccione Su Cargo</option>
-                        <option value="0">Empleado</option>
-                        <option value="1">Jefe</option>
+                        <option value=""> Seleccione Su Cargo</option>
+                        <option value="0"> Empleado</option>
+                        <option value="1"> Jefe</option>
                     </select>
                     <p class="terms"><input type="checkbox" name="terms" value="yes" required>Acepto los <a href="#">terminos y condiciones</a></p>
                     <a onmouseenter="habilitarUp()">

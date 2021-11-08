@@ -199,6 +199,19 @@
     display: none;
 }
 
+.initiation .container .formBx .form form input[id="emailUp"],
+.initiation .container .formBx .form form input[id="emailIn"] {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.initiation .container .formBx .form form input[id="passwordUp"],
+.initiation .container .formBx .form form input[id="passwordcheckUp"],
+.initiation .container .formBx .form form input[id="passwordIn"] {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
 .initiation .container .formBx .form form input[id="submitUp"],
 .initiation .container .formBx .form form input[id="submitIn"] {
     max-width: 100px;
