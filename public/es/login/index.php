@@ -137,12 +137,12 @@
 
     function signup($conexion)
     {
-        if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordcheck'])&&!empty($_POST['type'])) {
+        if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordcheck']) && $_POST['type']>=0 && $_POST['type']<2) {
             if (verifyemail($_POST['email'])==1) {
                 if ($_POST['password'] == $_POST['passwordcheck']) {
                     if (verifypassword($_POST['password'])==1) {
                         if ($_POST['terms']=="yes") {
-                            $sql = 'SELECT email FROM users WHERE email = :email';
+                            $sql = 'SELECT email FROM usuarios WHERE email = :email';
                             $datos = $conexion->prepare($sql);
                             $datos->bindParam(':email', $_POST['email']);
                             if ($datos->execute()) {
@@ -171,14 +171,14 @@
                                 $sql = 'INSERT INTO usuarios (id,name,lastname,direction,telephone,email,password,type,img,role,company) values (:id,:name,:lastname,:direction,:telephone,:email,:password,:type,:img,:role,:company)';
                                 $datos = $conexion->prepare($sql);
                                 /*Variables */
-                                $id='12';
+                                $id=date("mdHis");
                                 $temp=name($_POST['name']);
                                 $name=$temp[0];
                                 $lastname=$temp[1];
                                 $direction='';
                                 $telephone='';
                                 $email=$_POST['email'];
-                                $password=password_hash($_POST['password'], PASSWORD_BCRYPT);
+                                $password=password_hash($_POST['password'], PASSWORD_BCRYPT);/*Cifrar contraseña en hash BCRYPT */
                                 if($_POST['type']<2 && $_POST['type']>-1){
                                     $type=$_POST['type'];
                                 }else{
@@ -188,11 +188,18 @@
                                 $role='';
                                 $company='';
                                 /*Pasar Parametros al sql */
-                                $datos->bindParam(':id', $_POST['name']);
-                                $datos->bindParam(':name', $_POST['name']);
-                                $datos->bindParam(':lastname', $_POST['name']);
-                                $datos->bindParam(':email', $_POST['email']);
-                                $datos->bindParam(':password', $password); /*Cifrar contraseña en hash BCRYPT */
+                                $datos->bindParam(':id', $id);
+                                $datos->bindParam(':name', $name);
+                                $datos->bindParam(':lastname', $lastname);
+                                $datos->bindParam(':direction', $direction);
+                                $datos->bindParam(':telephone', $telephone);
+                                $datos->bindParam(':email', $email);
+                                $datos->bindParam(':password', $password); 
+                                $datos->bindParam(':type', $type);
+                                $datos->bindParam(':img', $img);
+                                $datos->bindParam(':role', $role);
+                                $datos->bindParam(':company', $company);
+                                
                                 if ($datos->execute()) {
                                     $GLOBALS['icon'] = 'success';
                                     $GLOBALS['title'] = 'Éxito';

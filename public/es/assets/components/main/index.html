@@ -344,7 +344,7 @@ follow_the_signs
                                 </thead>
                                 <tbody>
                                     <?php
-                                        $records = $conex->prepare('SELECT * FROM users');
+                                        $records = $conex->prepare('SELECT * FROM usuarios');
                                         $records->execute();
                                         while ($results = $records->fetch(PDO::FETCH_ASSOC)) { ?>
                                         <tr>
