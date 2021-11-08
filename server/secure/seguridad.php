@@ -3,7 +3,7 @@
 
   if (isset($_SESSION['id'])) {
     try{
-      $record = $conex->prepare('SELECT * FROM users WHERE id = :id');
+      $record = $conex->prepare('SELECT * FROM usuarios WHERE id = :id');
       $record->bindParam(':id', $_SESSION['id']);
       $record->execute();
       $result = $record->fetch(PDO::FETCH_ASSOC);
