@@ -180,6 +180,7 @@
     outline: none;
     font-size: 16px;
     border: 1px solid #333;
+    font-family: Georgia;
 }
 
 .initiation .container .formBx .form form select {
@@ -199,15 +200,15 @@
     display: none;
 }
 
-.initiation .container .formBx .form form input[id="emailUp"],
-.initiation .container .formBx .form form input[id="emailIn"] {
+.initiation .container .formBx .form form input[id="emailUp"]::placeholder,
+.initiation .container .formBx .form form input[id="emailIn"]::placeholder {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
 }
 
-.initiation .container .formBx .form form input[id="passwordUp"],
-.initiation .container .formBx .form form input[id="passwordcheckUp"],
-.initiation .container .formBx .form form input[id="passwordIn"] {
+.initiation .container .formBx .form form input[id="passwordUp"]::placeholder,
+.initiation .container .formBx .form form input[id="passwordcheckUp"]::placeholder,
+.initiation .container .formBx .form form input[id="passwordIn"]::placeholder {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
 }
