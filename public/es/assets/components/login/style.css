@@ -180,6 +180,12 @@
     outline: none;
     font-size: 16px;
     border: 1px solid #333;
+    font-family: sans-serif;
+}
+
+.initiation .container .formBx .form form input::placeholder {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
 }
 
 .initiation .container .formBx .form form select {
@@ -197,21 +203,6 @@
 
 .initiation .container .formBx .form form option[value=""][disabled] {
     display: none;
-}
-
-.initiation .container .formBx .form form input[id="emailUp"]::placeholder,
-.initiation .container .formBx .form form input[id="emailIn"]::placeholder {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    content: "\f0e0";
-}
-
-.initiation .container .formBx .form form input[id="passwordUp"]::placeholder,
-.initiation .container .formBx .form form input[id="passwordcheckUp"]::placeholder,
-.initiation .container .formBx .form form input[id="passwordIn"]::placeholder {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    content: "\f13e";
 }
 
 .initiation .container .formBx .form form input[id="submitUp"],
@@ -234,14 +225,6 @@
     background: #363636;
     color: #fff;
     cursor: default;
-}
-
-.fas.fa-check-circle {
-    color: #2A982A;
-}
-
-.fas.fa-ban {
-    color: #F20000;
 }
 
 .initiation .container .formBx .form form .terms {
