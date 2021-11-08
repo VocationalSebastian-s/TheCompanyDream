@@ -25,7 +25,7 @@
     function signin($conexion)
     {
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
-            $sql = 'SELECT * FROM users WHERE email=:email';
+            $sql = 'SELECT * FROM usuarios WHERE email=:email';
             $datos = $conexion->prepare($sql);
             $datos->bindParam(':email', $_POST['email']);
             if ($datos->execute()) {
@@ -78,7 +78,7 @@
                     $GLOBALS['class'] = 'error';
                 }
                 if ($repeated == false) {
-                    $sql = 'INSERT INTO users (name,lastname,email,password) values (:name,:lastname,:email,:password)';
+                    $sql = 'INSERT INTO usuarios (name,lastname,email,password) values (:name,:lastname,:email,:password)';
                     $datos = $conexion->prepare($sql);
                     $datos->bindParam(':name', $_POST['name']);
                     $datos->bindParam(':lastname', $_POST['name']);
