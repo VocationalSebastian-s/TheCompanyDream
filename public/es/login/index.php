@@ -18,78 +18,12 @@
     }
 
 
-
+    /* Accion Solicitada que llama funcion */
     if (!empty($_POST['action']) && $active==true) {
         if ($_POST['action'] == 'signin') {
             signin($conex);
         } elseif ($_POST['action'] == 'signup') {
             signup($conex);
-        }
-    }
-    // Verificacion de correo con funcion '/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i' //
-    function verifyemail($email){
-        if(filter_var($email, FILTER_VALIDATE_EMAIL)!=false){
-            return true;
-        }
-    }
-    function name($name){
-        $nameC=explode(" ",$name);
-        if(count($nameC)==1){
-            $result=array($nameC[0],'');
-            return $result;
-        } elseif (count($nameC)==2){
-            $result=array($nameC[0],$nameC[1]);
-            return $result;
-        }elseif (count($nameC)==3){
-            $result=array($nameC[0],$nameC[1].' '.$nameC[2]);
-            return $result;
-        }
-        elseif (count($nameC)==4){
-            $result=array($nameC[0].' '.$nameC[1],$nameC[2].' '.$nameC[3]);
-            return $result;
-
-        }else{
-            $result=array('','');
-            return $result;
-        }
-    }
-    
-    function verifypassword($password){
-        if((strlen($password))>7){
-            if((preg_match_all("/[\d]/", $password))>0){
-                if((preg_match_all("/[A-Z]/", $password))>0){
-                    if((preg_match_all("/[a-z]/", $password))>0){
-                        if((preg_match_all("/[\W]/", $password))>0){
-                            return true;
-                        }else{
-                            $GLOBALS['icon'] = 'error';
-                            $GLOBALS['title'] = 'Error';
-                            $GLOBALS['text'] = 'La contraseña debe tener al menos un caracter especial';
-                            return false;
-                        }
-                    }else{
-                        $GLOBALS['icon'] = 'error';
-                        $GLOBALS['title'] = 'Error';
-                        $GLOBALS['text'] = 'La contraseña debe tener al menos una minuscula';
-                        return false;
-                    }
-                }else{
-                    $GLOBALS['icon'] = 'error';
-                    $GLOBALS['title'] = 'Error';
-                    $GLOBALS['text'] = 'La contraseña debe tener al menos una mayuscula';
-                    return false;
-                }
-            }else{
-                $GLOBALS['icon'] = 'error';
-                $GLOBALS['title'] = 'Error';
-                $GLOBALS['text'] = 'La contraseña debe tener al menos un numero';
-                return false;
-            }
-        }else{
-            $GLOBALS['icon'] = 'error';
-            $GLOBALS['title'] = 'Error';
-            $GLOBALS['text'] = 'La contraseña debe ser minimo de 8 caracteres';
-            return false;
         }
     }
 
@@ -235,6 +169,77 @@
             $GLOBALS['icon'] = 'error';
             $GLOBALS['title'] = 'Error';
             $GLOBALS['text'] = 'Faltan datos para Registrarse';
+        }
+    }
+    
+    /* Funciones para Login */
+    
+    // Verificacion de correo con funcion '/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i' //
+    function verifyemail($email){
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)!=false){
+            return true;
+        }
+    }
+    
+    /* Separar Nombres y Apellidos */
+    function name($name){
+        $nameC=explode(" ",$name);
+        if(count($nameC)==1){
+            $result=array($nameC[0],'');
+            return $result;
+        } elseif (count($nameC)==2){
+            $result=array($nameC[0],$nameC[1]);
+            return $result;
+        }elseif (count($nameC)==3){
+            $result=array($nameC[0],$nameC[1].' '.$nameC[2]);
+            return $result;
+        }
+        elseif (count($nameC)==4){
+            $result=array($nameC[0].' '.$nameC[1],$nameC[2].' '.$nameC[3]);
+            return $result;
+
+        }else{
+            $result=array('','');
+            return $result;
+        }
+    }
+    /* Verificar Contraseña */
+    function verifypassword($password){
+        if((strlen($password))>7){
+            if((preg_match_all("/[\d]/", $password))>0){
+                if((preg_match_all("/[A-Z]/", $password))>0){
+                    if((preg_match_all("/[a-z]/", $password))>0){
+                        if((preg_match_all("/[\W]/", $password))>0){
+                            return true;
+                        }else{
+                            $GLOBALS['icon'] = 'error';
+                            $GLOBALS['title'] = 'Error';
+                            $GLOBALS['text'] = 'La contraseña debe tener al menos un caracter especial';
+                            return false;
+                        }
+                    }else{
+                        $GLOBALS['icon'] = 'error';
+                        $GLOBALS['title'] = 'Error';
+                        $GLOBALS['text'] = 'La contraseña debe tener al menos una minuscula';
+                        return false;
+                    }
+                }else{
+                    $GLOBALS['icon'] = 'error';
+                    $GLOBALS['title'] = 'Error';
+                    $GLOBALS['text'] = 'La contraseña debe tener al menos una mayuscula';
+                    return false;
+                }
+            }else{
+                $GLOBALS['icon'] = 'error';
+                $GLOBALS['title'] = 'Error';
+                $GLOBALS['text'] = 'La contraseña debe tener al menos un numero';
+                return false;
+            }
+        }else{
+            $GLOBALS['icon'] = 'error';
+            $GLOBALS['title'] = 'Error';
+            $GLOBALS['text'] = 'La contraseña debe ser minimo de 8 caracteres';
+            return false;
         }
     }
 ?>
