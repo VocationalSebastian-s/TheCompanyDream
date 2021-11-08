@@ -75,23 +75,29 @@
     function signin($conexion)
     {
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
-            $sql = 'SELECT * FROM users WHERE email=:email';
+            $sql = 'SELECT * FROM usuarios WHERE email=:email';
             $datos = $conexion->prepare($sql);
             $datos->bindParam(':email', $_POST['email']);
             if ($datos->execute()) {
-                $results = $datos->fetch(PDO::FETCH_ASSOC); /*Datos almacenado en Array*/
-                if($_POST['email']==$results['email']) {
-                    if (password_verify($_POST['password'], $results['password'])) {
-                        $_SESSION['id'] = $results['id']; /*Pasar datos a el sistema de seguridad*/
-                        $GLOBALS['icon'] = 'success';
-                        $GLOBALS['title'] = 'Éxito';
-                        $GLOBALS['text'] = 'Se ha iniciado sesión correctamente';
+                $usuarios = $datos->fetch(PDO::FETCH_ASSOC); /*Datos almacenado en Array*/
+                if (is_array($usuarios)) {
+                    if ($_POST['email']==$usuarios['email']) {
+                        if (password_verify($_POST['password'], $usuarios['password'])) {
+                            $_SESSION['id'] = $usuarios['id']; /*Pasar datos a el sistema de seguridad*/
+                            $GLOBALS['icon'] = 'success';
+                            $GLOBALS['title'] = 'Éxito';
+                            $GLOBALS['text'] = 'Se ha iniciado sesión correctamente';
+                        } else {
+                            $GLOBALS['icon'] = 'error';
+                            $GLOBALS['title'] = 'Error';
+                            $GLOBALS['text'] = 'La contraseña es incorrecta';
+                        }
                     } else {
                         $GLOBALS['icon'] = 'error';
                         $GLOBALS['title'] = 'Error';
-                        $GLOBALS['text'] = 'La contraseña es incorrecta';
+                        $GLOBALS['text'] = 'El correo no coíncide con una cuenta';
                     }
-                }else{
+                }else {
                     $GLOBALS['icon'] = 'error';
                     $GLOBALS['title'] = 'Error';
                     $GLOBALS['text'] = 'El correo no existe';
@@ -99,7 +105,7 @@
             }else{
                 $GLOBALS['icon'] = 'error';
                 $GLOBALS['title'] = 'Error';
-                $GLOBALS['text'] = 'No se pudo encontrar este correo';
+                $GLOBALS['text'] = 'No se pudo verificar si el correo existe';
             }
         }else{
             $GLOBALS['icon'] = 'error';
@@ -120,9 +126,9 @@
                             $datos->bindParam(':email', $_POST['email']);
                             if ($datos->execute()) {
                                 try {
-                                    $results = $datos->fetch(PDO::FETCH_ASSOC);
-                                    if (is_array($results)) {
-                                        if ($results['email'] == $_POST['email']) {
+                                    $usuarios = $datos->fetch(PDO::FETCH_ASSOC);
+                                    if (is_array($usuarios)) {
+                                        if ($usuarios['email'] == $_POST['email']) {
                                             $repeated = true;
                                         } else {
                                             $repeated = false;
@@ -141,7 +147,7 @@
                                 $GLOBALS['text'] = 'No se pudo verificar la existencia de la cuenta';
                             }
                             if ($repeated == false) {
-                                $sql = 'INSERT INTO users (name,lastname,email,password) values (:name,:lastname,:email,:password)';
+                                $sql = 'INSERT INTO usuarios (name,lastname,email,password) values (:name,:lastname,:email,:password)';
                                 $datos = $conexion->prepare($sql);
                                 $datos->bindParam(':name', $_POST['name']);
                                 $datos->bindParam(':lastname', $_POST['name']);
