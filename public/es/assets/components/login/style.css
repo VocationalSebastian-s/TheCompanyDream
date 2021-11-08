@@ -181,15 +181,15 @@
     font-size: 16px;
     border: 2px solid #666;
     font-family: sans-serif;
-    transition: 0.4 ease all;
-    -webkit-transition: 0.4 ease all;
-    -moz-transition: 0.4 ease all;
-    -ms-transition: 0.4 ease all;
-    -o-transition: 0.4 ease all;
+    transition: 0.5s ease all;
+    -webkit-transition: 0.5s ease all;
+    -moz-transition: 0.5s ease all;
+    -ms-transition: 0.5s ease all;
+    -o-transition: 0.5s ease all;
 }
 
 .initiation .container .formBx .form form input:focus {
-    border: 2px solid #000;
+    border: 2px solid #fff;
 }
 
 .initiation .container .formBx .form form input::placeholder {
@@ -213,8 +213,17 @@
     padding: 10px;
     outline: none;
     font-size: 16px;
-    border: 1px solid #333;
-    color: #000
+    border: 2px solid #666;
+    color: #000;
+    transition: 0.5s ease all;
+    -webkit-transition: 0.5s ease all;
+    -moz-transition: 0.5s ease all;
+    -ms-transition: 0.5s ease all;
+    -o-transition: 0.5s ease all;
+}
+
+.initiation .container .formBx .form form select:focus {
+    border: 2px solid #fff;
 }
 
 .initiation .container .formBx .form form select option {
