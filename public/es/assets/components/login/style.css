@@ -178,12 +178,17 @@
     margin-bottom: 20px;
     padding: 10px;
     outline: none;
-    font-size: 16px;
+    font-size: 20px;
     border: 1px solid #333;
     font-family: sans-serif;
 }
 
 .initiation .container .formBx .form form input::placeholder {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.initiation .container .formBx .form form select {
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
 }
