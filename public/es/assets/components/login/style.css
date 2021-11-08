@@ -185,17 +185,17 @@
 
 .initiation .container .formBx .form form input::placeholder {
     font-family: sans-serif, "Font Awesome 5 Free";
-    font-weight: 16, 900;
+    font-weight: 300;
 }
 
 .initiation .container .formBx .form form select {
     font-family: sans-serif, "Font Awesome 5 Free";
-    font-weight: 16, 900;
+    font-weight: 300;
 }
 
 .initiation .container .formBx .form form select option {
     font-family: sans-serif, "Font Awesome 5 Free";
-    font-weight: 16, 900;
+    font-weight: 300;
 }
 
 .initiation .container .formBx .form form select {
