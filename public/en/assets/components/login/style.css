@@ -1,17 +1,10 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
 .initiation {
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url(fondo.jpg) center fixed;
+    background: url(src/images/fondo.jpg) center fixed;
     background-size: 100%;
     transition: 0.5s;
     -webkit-transition: 0.5s;
@@ -180,29 +173,68 @@
     font-weight: 500;
 }
 
-.initiation .container .formBx form input {
+.initiation .container .formBx .form form input {
     width: 100%;
     margin-bottom: 20px;
     padding: 10px;
     outline: none;
     font-size: 16px;
-    border: 1px solid #333;
+    border: 2px solid #666;
+    font-family: sans-serif;
+    transition: 0.5s ease all;
+    -webkit-transition: 0.5s ease all;
+    -moz-transition: 0.5s ease all;
+    -ms-transition: 0.5s ease all;
+    -o-transition: 0.5s ease all;
 }
 
-.initiation .container .formBx form select {
+.initiation .container .formBx .form form input:focus {
+    border: 2px solid #fff;
+}
+
+.initiation .container .formBx .form form input::placeholder {
+    font-family: sans-serif, "Font Awesome 5 Free";
+    font-weight: 700;
+}
+
+.initiation .container .formBx .form form select {
+    font-family: sans-serif, "Font Awesome 5 Free";
+    font-weight: 700;
+}
+
+.initiation .container .formBx .form form select option {
+    font-family: sans-serif, "Font Awesome 5 Free";
+    font-weight: 510;
+}
+
+.initiation .container .formBx .form form select {
     width: 100%;
     margin-bottom: 20px;
     padding: 10px;
     outline: none;
     font-size: 16px;
-    border: 1px solid #333;
+    border: 2px solid #666;
+    color: #000;
+    transition: 0.5s ease all;
+    -webkit-transition: 0.5s ease all;
+    -moz-transition: 0.5s ease all;
+    -ms-transition: 0.5s ease all;
+    -o-transition: 0.5s ease all;
 }
 
-.initiation .container .formBx form select:required:invalid {
+.initiation .container .formBx .form form select:focus {
+    border: 2px solid #fff;
+}
+
+.initiation .container .formBx .form form select option {
+    color: #000;
+}
+
+.initiation .container .formBx .form form select:required:invalid {
     color: #666;
 }
 
-.initiation .container .formBx form option[value=""][disabled] {
+.initiation .container .formBx .form form option[value=""][disabled] {
     display: none;
 }
 
@@ -211,7 +243,7 @@
     max-width: 100px;
     border-color: #363636;
     background: #1A5276;
-    color: #000;
+    color: #fff;
     cursor: pointer;
     box-shadow: 0 0 1px 0 #363636 inset;
     transition: 0.8s ease-in-out;
@@ -219,6 +251,32 @@
     -moz-transition: 0.8s ease-in-out;
     -ms-transition: 0.8s ease-in-out;
     -o-transition: 0.8s ease-in-out;
+}
+
+.initiation .container .formBx .form form input[class="disabled"],
+.initiation .container .formBx .form form input[class="disabled"] {
+    background: #363636;
+    color: #fff;
+    cursor: default;
+}
+
+.initiation .container .formBx .form form .terms {
+    white-space: nowrap;
+    margin: auto;
+}
+
+.initiation .container .formBx .form form .terms input {
+    width: 30px;
+}
+
+.initiation .container .formBx .form form .terms a {
+    text-decoration: none;
+    color: #1A5276;
+}
+
+.terms a {
+    text-decoration: none;
+    color: #1A5276;
 }
 
 .initiation .container .formBx .form form .forgot {
@@ -232,6 +290,45 @@
 
 .initiation .container .formBx .form form .forgot:hover {
     color: #467A84;
+}
+
+.initiation .container .formBx .form form .icon {
+    position: relative;
+}
+
+.initiation .container .formBx .form form .icon i {
+    visibility: hidden;
+    position: absolute;
+    background: #fff;
+    padding-left: 1px;
+    padding-right: 1px;
+    top: 11px;
+    right: 10px;
+    transform: scale(0);
+    transition: 0.4s linear;
+    -webkit-transition: 0.4s linear;
+    -moz-transition: 0.4s linear;
+    -ms-transition: 0.4s linear;
+    -o-transition: 0.4s linear;
+}
+
+.initiation .container .formBx .form form .icon .fas.fa-check-circle {
+    color: #39A333;
+}
+
+.initiation .container .formBx .form form .icon .fas.fa-exclamation-circle {
+    color: #E74C3C;
+}
+
+.initiation .container .formBx .form form .icon .fas.fa-exclamation-triangle {
+    color: #F2C200;
+}
+
+.initiation .container .formBx .form form .icon .fas.fa-check-circle.active,
+.initiation .container .formBx .form form .icon .fas.fa-exclamation-circle.active,
+.initiation .container .formBx .form form .icon .fas.fa-exclamation-triangle.active {
+    transform: scale(1.3);
+    visibility: visible;
 }
 
 @media (max-width: 1240px) {
