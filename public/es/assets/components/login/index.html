@@ -15,8 +15,14 @@
                 <form action="index.php" method="post">
                     <h3>Iniciar sesión</h3>
                     <input id="actionIn" type="hidden" name="action" value="signin" required>
-                    <input id="emailIn" onblur="verifyEmailIn()" type="email" name="email" placeholder=' Correo' maxlength="120" value="<?php if(!empty($_POST['email'])){ echo($_POST['email']); }?>" required>
-                    <input id="passwordIn" onblur="verifyPasswordIn()" type="password" name="password" placeholder=" Contraseña" maxlength="20" required>
+                    <div class="icon emailIn">
+                        <input id="emailIn" onblur="verifyEmailIn()" type="email" name="email" placeholder=' Correo' maxlength="120" value="<?php if(!empty($_POST['email'])){ echo($_POST['email']); }?>" required>
+                        <i id="success" class="fas fa-check-circle"></i><i id="error" class="fas fa-exclamation-circle"></i><i id="warning" class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="icon passwordIn">
+                        <input id="passwordIn" onblur="verifyPasswordIn()" type="password" name="password" placeholder=" Contraseña" maxlength="20" required>
+                        <i id="success" class="fas fa-check-circle"></i><i id="error" class="fas fa-exclamation-circle"></i><i id="warning" class="fas fa-exclamation-triangle"></i>
+                    </div>
                     <a onmouseenter="habilitarIn()">
                         <input id="submitIn" class="disabled" type="submit" value="Ingresar" disabled>
                     </a>
@@ -27,10 +33,22 @@
                 <form action="index.php" method="post">
                     <h3>Inscribirse</h3>
                     <input id="actionUp" type="hidden" name="action" value="signup" required>
-                    <input id="nameUp" type="text" name="name" placeholder=" Nombre Y Apellido(s)" maxlength="14" value="<?php if(!empty($_POST['name'])){ echo($_POST['name']); }?>" required>
-                    <input id="emailUp" onblur="verifyEmailUp()" type="email" name="email" placeholder=" Correo" maxlength="120" value="<?php if(!empty($_POST['email'])){ echo($_POST['email']); }?>" required>
-                    <input id="passwordUp" type="password" name="password" placeholder=" Contraseña" maxlength="20" required>
-                    <input id="passwordcheckUp" onblur="verifyPasswordUp()" type="password" name="passwordcheck" placeholder=" Verificar Contraseña" maxlength="20" required>
+                    <div class="icon nameUp">
+                        <input id="nameUp" type="text" onblur="verifyNameUp()" name="name" placeholder=" Nombre Y Apellido(s)" maxlength="50" value="<?php if(!empty($_POST['name'])){ echo($_POST['name']); }?>" required>
+                        <i id="success" class="fas fa-check-circle"></i><i id="error" class="fas fa-exclamation-circle"></i><i id="warning" class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="icon emailUp">
+                        <input id="emailUp" onblur="verifyEmailUp()" type="email" name="email" placeholder=" Correo" maxlength="120" value="<?php if(!empty($_POST['email'])){ echo($_POST['email']); }?>" required>
+                        <i id="success" class="fas fa-check-circle"></i><i id="error" class="fas fa-exclamation-circle"></i><i id="warning" class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="icon passwordUp">
+                        <input id="passwordUp" type="password" name="password" placeholder=" Contraseña" maxlength="20" required>
+                        <i id="success" class="fas fa-check-circle"></i><i id="error" class="fas fa-exclamation-circle"></i><i id="warning" class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="icon passwordcheckUp">
+                        <input id="passwordcheckUp" onblur="verifyPasswordUp()" type="password" name="passwordcheck" placeholder=" Verificar Contraseña" maxlength="20" required>
+                        <i id="success" class="fas fa-check-circle"></i><i id="error" class="fas fa-exclamation-circle"></i><i id="warning" class="fas fa-exclamation-triangle"></i>
+                    </div>
                     <select id="typeUp" name="type" required>
                         <option value=""> Seleccione su cargo</option>
                         <option value="0"> Empleado</option>

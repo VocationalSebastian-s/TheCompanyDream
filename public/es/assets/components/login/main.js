@@ -23,9 +23,11 @@ function habilitarIn() {
 function verifyEmailIn() {
     var emailIn = document.getElementById('emailIn').value;
     if (emailIn != '') {
+        iconalert("emailIn", "success");
         return true;
     } else {
         hoveralert("error", "Correo Vacío");
+        iconalert("emailIn", "error");
         return false;
     }
 }
@@ -33,16 +35,18 @@ function verifyEmailIn() {
 function verifyPasswordIn() {
     var passwordIn = document.getElementById('passwordIn').value;
     if (passwordIn != '') {
+        iconalert("passwordIn", "success");
         return true;
     } else {
         hoveralert("error", "Contraseña Vacía");
+        iconalert("passwordIn", "error");
         return false;
     }
 }
 
 function habilitarUp() {
     var btnUp = document.getElementById('submitUp');
-    if (verifyEmailUp() && verifyPasswordUp()) {
+    if (verifyEmailUp() && verifyPasswordUp() && verifyNameUp()) {
         btnUp.disabled = false;
         btnUp.classList.remove('disabled');
         hoveralert("success", "Parametros Correctos");
@@ -52,18 +56,51 @@ function habilitarUp() {
     }
 }
 
+function verifyNameUp() {
+    var nameUp = document.getElementById('nameUp').value;
+    if (nameUp != "") {
+        nameUp = nameUp.split(" ");
+        if (nameUp.length == 1) {
+            hoveralert("error", "No hay apellidos");
+            iconalert("nameUp", "warning");
+            return true;
+        } else if (nameUp.length == 2) {
+            hoveralert("error", "No hay segundo apellido");
+            iconalert("nameUp", "warning");
+            return true;
+        } else if (nameUp.length == 3) {
+            iconalert("nameUp", "success");
+            return true;
+        } else if (nameUp.length == 4) {
+            iconalert("nameUp", "success");
+            return true;
+        } else if (nameUp.length > 4) {
+            hoveralert("error", "Nombre muy extenso");
+            iconalert("nameUp", "error");
+            return false;
+        }
+    } else {
+        hoveralert("error", "Nombre Vacío");
+        iconalert("nameUp", "error");
+        return false;
+    }
+}
+
 function verifyEmailUp() {
     var emailUp = document.getElementById('emailUp').value;
     var params = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
     if (emailUp != '') {
         if (params.test(emailUp) == true) {
+            iconalert("emailUp", "success");
             return true;
         } else {
             hoveralert("error", "El correo no es correcto");
+            iconalert("emailUp", "error");
             return false;
         }
     } else {
         hoveralert("error", "El correo esta vacío");
+        iconalert("emailUp", "error");
         return false;
     }
 }
@@ -79,30 +116,63 @@ function verifyPasswordUp() {
                     if (/[a-z]/.test(passwordUp)) {
                         if (/[\W]/.test(passwordUp)) {
                             hoveralert("success", "Parametros Correctos");
+                            iconalert("passwordUp", "success");
+                            iconalert("passwordcheckUp", "success");
                             return true;
                         } else {
                             hoveralert("error", "La contraseña debe tener mínimo un caracter especial");
+                            iconalert("passwordUp", "error");
+                            iconalert("passwordcheckUp", "error");
                             return false;
                         }
                     } else {
                         hoveralert("error", "La contraseña debe tener mínimo una minúscula");
+                        iconalert("passwordUp", "error");
+                        iconalert("passwordcheckUp", "error");
                         return false;
                     }
                 } else {
                     hoveralert("error", "La contraseña debe tener mínimo una mayúscula");
+                    iconalert("passwordUp", "error");
+                    iconalert("passwordcheckUp", "error");
                     return false;
                 }
             } else {
                 hoveralert("error", "La contraseña debe tener mínimo un numero");
+                iconalert("passwordUp", "error");
+                iconalert("passwordcheckUp", "error");
                 return false;
             }
         } else {
             hoveralert("error", "Las contraseñas no coinciden");
+            iconalert("passwordUp", "error");
+            iconalert("passwordcheckUp", "error");
             return false;
         }
     } else {
         hoveralert("error", "La contraseñas debe tener mínimo 8 caracteres");
+        iconalert("passwordUp", "error");
+        iconalert("passwordcheckUp", "error");
         return false;
+    }
+}
+
+function iconalert(input, alert) {
+    input = '.icon.' + input;
+    alert = '#' + alert;
+    if (alert == '#success') {
+        document.querySelector(input + " #error").classList.remove('active');
+        document.querySelector(input + " #warning").classList.remove('active');
+        document.querySelector(input + " " + alert).classList.add('active');
+    } else
+    if (alert == '#error') {
+        document.querySelector(input + " #success").classList.remove('active');
+        document.querySelector(input + " #warning").classList.remove('active');
+        document.querySelector(input + " " + alert).classList.add('active');
+    } else if (alert == '#warning') {
+        document.querySelector(input + " #success").classList.remove('active');
+        document.querySelector(input + " #warning").classList.remove('active');
+        document.querySelector(input + " " + alert).classList.add('active');
     }
 }
 
