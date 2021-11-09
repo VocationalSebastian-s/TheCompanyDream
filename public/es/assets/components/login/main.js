@@ -171,7 +171,7 @@ function iconalert(input, alert) {
         document.querySelector(input + " " + alert).classList.add('active');
     } else if (alert == '#warning') {
         document.querySelector(input + " #success").classList.remove('active');
-        document.querySelector(input + " #warning").classList.remove('active');
+        document.querySelector(input + " #error").classList.remove('active');
         document.querySelector(input + " " + alert).classList.add('active');
     }
 }
