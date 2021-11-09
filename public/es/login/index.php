@@ -154,7 +154,7 @@
                         }else{
                             $GLOBALS['icon'] = 'error';
                             $GLOBALS['title'] = 'Error';
-                            $GLOBALS['html'] = "<p class='terms'>Debes Aceptar los <a href='../assets/docs/Terms_and Conditions.pdf'>terminos y condiciones</a> de la politica de proteccion de datos. Recibiras confirmacion del registro por correo electronico</p>";
+                            $GLOBALS['html'] = "<p class='terms'>Debes Aceptar los <a href='../assets/docs/Terms_and_Conditions.pdf'>terminos y condiciones</a> de la politica de proteccion de datos. Recibiras confirmacion del registro por correo electronico</p>";
                         }
                     }
                 }else{
