@@ -10,7 +10,9 @@ var btnUp = '';
 
 function habilitarIn() {
     var btnIn = document.getElementById('submitIn');
-    if (verifyEmailIn() && verifyPasswordIn()) {
+    let Valemail = verifyEmailIn();
+    let Valpassword = verifyPasswordIn();
+    if (Valemail == True && Valpassword == True) {
         btnIn.disabled = false;
         btnIn.classList.remove('disabled');
         hoveralert("success", "Parametros Correctos");
@@ -46,7 +48,10 @@ function verifyPasswordIn() {
 
 function habilitarUp() {
     var btnUp = document.getElementById('submitUp');
-    if (verifyEmailUp() && verifyPasswordUp() && verifyNameUp()) {
+    let Valemail = verifyEmailUp();
+    let Valpassword = verifyPasswordUp();
+    let Valname = verifyNameUp();
+    if (Valemail == True && Valpassword == True && Valname == True) {
         btnUp.disabled = false;
         btnUp.classList.remove('disabled');
         hoveralert("success", "Parametros Correctos");
