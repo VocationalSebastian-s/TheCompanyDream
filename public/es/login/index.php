@@ -28,31 +28,38 @@
         }
     }
 
-    function signin($conexion)
-    {
+    function signin($conexion){
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
             $sql = 'SELECT * FROM usuarios WHERE email=:email';
             $datos = $conexion->prepare($sql);
             $datos->bindParam(':email', $_POST['email']);
             if ($datos->execute()) {
                 $usuarios = $datos->fetch(PDO::FETCH_ASSOC); /*Datos almacenado en Array*/
+                
                 if (is_array($usuarios)) {
-                    if ($_POST['email']==$usuarios['email']) {
-                        if (password_verify($_POST['password'], $usuarios['password'])) {
-                            $_SESSION['id'] = $usuarios['id']; /*Pasar datos a el sistema de seguridad*/
-                            $GLOBALS['icon'] = 'success';
-                            $GLOBALS['title'] = 'Éxito';
-                            $GLOBALS['text'] = 'Se ha iniciado sesión correctamente';
-                            dataentry($conexion,$usuarios['id']);
+                    if (consultattempts($conexion, $usuarios['attempts'])>3) {
+                        if ($_POST['email']==$usuarios['email']) {
+                            if (password_verify($_POST['password'], $usuarios['password'])) {
+                                $_SESSION['id'] = $usuarios['id']; /*Pasar datos a el sistema de seguridad*/
+                                $GLOBALS['icon'] = 'success';
+                                $GLOBALS['title'] = 'Éxito';
+                                $GLOBALS['text'] = 'Se ha iniciado sesión correctamente';
+                                dataentry($conexion, $usuarios['id']);
+                            } else {
+                                $GLOBALS['icon'] = 'error';
+                                $GLOBALS['title'] = 'Error';
+                                $GLOBALS['text'] = 'La contraseña es incorrecta';
+                                attempts($conexion, $usuarios['id']);
+                            }
                         } else {
                             $GLOBALS['icon'] = 'error';
                             $GLOBALS['title'] = 'Error';
-                            $GLOBALS['text'] = 'La contraseña es incorrecta';
+                            $GLOBALS['text'] = 'El correo no coíncide con una cuenta';
                         }
-                    } else {
+                    }else {
                         $GLOBALS['icon'] = 'error';
                         $GLOBALS['title'] = 'Error';
-                        $GLOBALS['text'] = 'El correo no coíncide con una cuenta';
+                        $GLOBALS['text'] = 'Muchos intentos, se bloqueo la cuenta';
                     }
                 }else {
                     $GLOBALS['icon'] = 'error';
@@ -288,7 +295,8 @@
         $datos->bindParam(':dataentry', $dataentry);
         $datos->execute();
     }
-    function attempts($conexion,$id){
+    
+    function consultattempts($conexion,$id){
         $sql = 'SELECT attempts FROM seguridad WHERE user=:user';
         $datos = $conexion->prepare($sql);
         
@@ -296,11 +304,14 @@
         $datos->bindParam(':user', $id);
         if ($datos->execute()) {
             $seguridad=$datos->fetch(PDO::FETCH_ASSOC);
+            return $seguridad['attempts'];
+    }
+    function attempts($conexion,$id){
             $sql = 'UPDATE seguridad SET attempts=:attempts WHERE user=:user ';
             $datos = $conexion->prepare($sql);
             /*Variables */
             $user=$id;
-            $attempts=1+intval($seguridad['attempts']);
+            $attempts=1+intval(consultattempts($conexion,$id));
         
             /*Pasar Parametros al sql */
             $datos->bindParam(':user', $user);
