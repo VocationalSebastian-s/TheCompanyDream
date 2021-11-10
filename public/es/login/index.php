@@ -1,5 +1,6 @@
 <?php
     require '../../../server/connection/conexion.php';
+    date_default_timezone_set("America/Bogota");
     
     /*Sweet Alert -> Parametros */
     $title='';
@@ -135,6 +136,7 @@
                                         $GLOBALS['icon'] = 'success';
                                         $GLOBALS['title'] = 'Éxito';
                                         $GLOBALS['text'] = 'La cuenta ha sido creada con exito';
+                                        createtoken($conexion,$id);
                                         signin($conexion);
                                     } else {
                                         $GLOBALS['icon'] = 'error';
@@ -243,6 +245,35 @@
             $GLOBALS['text'] = 'La contraseña debe ser minimo de 8 caracteres';
             return false;
         }
+    }
+    
+    function createtoken($conexion,$id){
+        $sql = 'INSERT INTO seguridad (token, optiontoken, tokenactive, datatoken,user,dataentry,datacreate,activaction,attempts,timeactive) values (:token, :optiontoken, :tokenactive, :datatoken, :user , :dataentry ,:datacreate , :activaction , :attempts , :timeactive)';
+        $datos = $conexion->prepare($sql);
+        /*Variables */
+        $token=date("ymwzntdhis");
+        $optiontoken='';
+        $tokenactive='0';	
+        $datatoken=date("o-m-d");
+        $user=$id;
+        $dataentry=date("o-m-d");
+        $datacreate=date("o-m-d");
+        $activaction='1';	
+        $attempts='0';
+        $timeactive='0';
+
+        /*Pasar Parametros al sql */
+        $datos->bindParam(':token', $token);
+        $datos->bindParam(':optiontoken', $optiontoken);
+        $datos->bindParam(':datatoken', $datatoken);
+        $datos->bindParam(':user', $user);
+        $datos->bindParam(':dataentry', $dataentry);
+        $datos->bindParam(':datacreate', $datacreate);
+        $datos->bindParam(':activaction', $activaction);
+        $datos->bindParam(':attempts', $attempts);
+        $datos->bindParam(':timeactive', $timeactive);
+    
+        $datos->execute();
     }
 ?>
 <!DOCTYPE html>
