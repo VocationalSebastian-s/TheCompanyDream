@@ -12,7 +12,7 @@ function habilitarIn() {
     var btnIn = document.getElementById('submitIn');
     let Valemail = verifyEmailIn();
     let Valpassword = verifyPasswordIn();
-    if (Valemail == True && Valpassword == True) {
+    if (Valemail == true && Valpassword == true) {
         btnIn.disabled = false;
         btnIn.classList.remove('disabled');
         hoveralert("success", "Parametros Correctos");
@@ -51,7 +51,7 @@ function habilitarUp() {
     let Valemail = verifyEmailUp();
     let Valpassword = verifyPasswordUp();
     let Valname = verifyNameUp();
-    if (Valemail == True && Valpassword == True && Valname == True) {
+    if (Valemail == true && Valpassword == true && Valname == true) {
         btnUp.disabled = false;
         btnUp.classList.remove('disabled');
         hoveralert("success", "Parametros Correctos");
