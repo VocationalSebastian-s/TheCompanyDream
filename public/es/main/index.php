@@ -7,6 +7,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<!---Meta Etiquetas-->
+        <?php include('../../assets/utils/index.html') ?>
+        <!---Stylesheet-->
+        <style type="text/css">
+            <?php include('../../assets/fonts/style.css') ?>
+            <?php include('../../assets/utils/style.css') ?>
+        </style>
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="../assets/components/main/src/css/bootstrap.min.css">
 		<!----css3---->
