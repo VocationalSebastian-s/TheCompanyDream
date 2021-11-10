@@ -37,7 +37,7 @@
                 $usuarios = $datos->fetch(PDO::FETCH_ASSOC); /*Datos almacenado en Array*/
                 
                 if (is_array($usuarios)) {
-                    if (consultattempts($conexion, $usuarios['attempts'])>3) {
+                    if (consultattempts($conexion, $usuarios['id'])<4) {
                         if ($_POST['email']==$usuarios['email']) {
                             if (password_verify($_POST['password'], $usuarios['password'])) {
                                 $_SESSION['id'] = $usuarios['id']; /*Pasar datos a el sistema de seguridad*/
@@ -80,7 +80,7 @@
 
     function signup($conexion)
     {
-        if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordcheck']) && $_POST['type']>=0 && $_POST['type']<2) {
+        if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordcheck']) && !empty($_POST['type'])) {
             if (verifyemail($_POST['email'])==1) {
                 if ($_POST['password'] == $_POST['passwordcheck']) {
                     if (verifypassword($_POST['password'])==1) {
@@ -256,19 +256,16 @@
     }
     
     function createtoken($conexion,$id){
-        $sql = 'INSERT INTO seguridad (token, optiontoken, tokenactive, datatoken,user,dataentry,datacreate,activaction,attempts,timeactive) values (:token, :optiontoken, :tokenactive, :datatoken, :user , :dataentry ,:datacreate , :activaction , :attempts , :timeactive)';
+        $sql = 'INSERT INTO seguridad (token, optiontoken, datatoken,user,dataentry,datacreate,activaction) values (:token, :optiontoken, :datatoken, :user , :dataentry ,:datacreate , :activaction )';
         $datos = $conexion->prepare($sql);
         /*Variables */
         $token=date("ymwzntdhis");
         $optiontoken='';
-        $tokenactive='0';	
         $datatoken=date("o-m-d");
         $user=$id;
         $dataentry=date("o-m-d");
         $datacreate=date("o-m-d");
         $activaction='1';	
-        $attempts='0';
-        $timeactive='0';
 
         /*Pasar Parametros al sql */
         $datos->bindParam(':token', $token);
@@ -278,8 +275,6 @@
         $datos->bindParam(':dataentry', $dataentry);
         $datos->bindParam(':datacreate', $datacreate);
         $datos->bindParam(':activaction', $activaction);
-        $datos->bindParam(':attempts', $attempts);
-        $datos->bindParam(':timeactive', $timeactive);
         $datos->execute();
     }
     
@@ -311,7 +306,7 @@
             $datos = $conexion->prepare($sql);
             /*Variables */
             $user=$id;
-            $attempts=1+intval(consultattempts($conexion,$id));
+            $attempts=1+intval(consultattempts($conexion,$user));
         
             /*Pasar Parametros al sql */
             $datos->bindParam(':user', $user);

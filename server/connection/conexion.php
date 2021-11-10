@@ -1,15 +1,15 @@
 <?php
-	/* Conexion en xampp
+	/* Conexion en xampp*/
 	$server = 'localhost';
 	$username = 'root';
 	$password = '';
-	$database = 'thecompanydream';*/
+	$database = 'thecompanydream';
 
-	/* Conexion en remotemysql.com*/
+	/* Conexion en remotemysql.com
 	$server = 'remotemysql.com';
 	$username = 'W80NGrZVyT';
-	$password = 'VU7ZJIPVe8';
-	$database = 'W80NGrZVyT';
+	$password = 'VU7ZJIPVe8';*
+	$database = 'W80NGrZVyT';*/
 	
 
 	try {
