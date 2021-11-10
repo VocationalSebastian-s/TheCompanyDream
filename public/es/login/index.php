@@ -43,6 +43,7 @@
                             $GLOBALS['icon'] = 'success';
                             $GLOBALS['title'] = 'Éxito';
                             $GLOBALS['text'] = 'Se ha iniciado sesión correctamente';
+                            dataentry($conexion,$usuarios['id']);
                         } else {
                             $GLOBALS['icon'] = 'error';
                             $GLOBALS['title'] = 'Error';
@@ -272,9 +273,42 @@
         $datos->bindParam(':activaction', $activaction);
         $datos->bindParam(':attempts', $attempts);
         $datos->bindParam(':timeactive', $timeactive);
-    
         $datos->execute();
     }
+    
+    function dataentry($conexion,$id){
+        $sql = 'UPDATE seguridad SET dataentry=:dataentry WHERE user=:user ';
+        $datos = $conexion->prepare($sql);
+        /*Variables */
+        $user=$id;
+        $dataentry=date("o-m-d");
+        
+        /*Pasar Parametros al sql */
+        $datos->bindParam(':user', $user);
+        $datos->bindParam(':dataentry', $dataentry);
+        $datos->execute();
+    }
+    function attempts($conexion,$id){
+        $sql = 'SELECT attempts FROM seguridad WHERE user=:user';
+        $datos = $conexion->prepare($sql);
+        
+        /*Pasar Parametros al sql */
+        $datos->bindParam(':user', $id);
+        if ($datos->execute()) {
+            $seguridad=$datos->fetch(PDO::FETCH_ASSOC);
+            $sql = 'UPDATE seguridad SET attempts=:attempts WHERE user=:user ';
+            $datos = $conexion->prepare($sql);
+            /*Variables */
+            $user=$id;
+            $attempts=1+intval($seguridad['attempts']);
+        
+            /*Pasar Parametros al sql */
+            $datos->bindParam(':user', $user);
+            $datos->bindParam(':attempts', $attempts);
+            $datos->execute();
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
