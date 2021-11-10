@@ -37,7 +37,7 @@
                 $usuarios = $datos->fetch(PDO::FETCH_ASSOC); /*Datos almacenado en Array*/
                 
                 if (is_array($usuarios)) {
-                    if (consultattempts($conexion, $usuarios['id'])<4) {
+                    if (consultattempts($conexion, $usuarios['id'])<3) {
                         if ($_POST['email']==$usuarios['email']) {
                             if (password_verify($_POST['password'], $usuarios['password'])) {
                                 $_SESSION['id'] = $usuarios['id']; /*Pasar datos a el sistema de seguridad*/
@@ -49,7 +49,7 @@
                                 $GLOBALS['icon'] = 'error';
                                 $GLOBALS['title'] = 'Error';
                                 $GLOBALS['text'] = 'La contraseña es incorrecta';
-                                attempts($conexion, $usuarios['id']);
+                                attempts($conexion,$usuarios['id']);
                             }
                         } else {
                             $GLOBALS['icon'] = 'error';
@@ -300,19 +300,19 @@
         if ($datos->execute()) {
             $seguridad=$datos->fetch(PDO::FETCH_ASSOC);
             return $seguridad['attempts'];
+        }
     }
     function attempts($conexion,$id){
             $sql = 'UPDATE seguridad SET attempts=:attempts WHERE user=:user ';
             $datos = $conexion->prepare($sql);
             /*Variables */
             $user=$id;
-            $attempts=1+intval(consultattempts($conexion,$user));
+            $attempts=1+consultattempts($conexion,$user);
         
             /*Pasar Parametros al sql */
             $datos->bindParam(':user', $user);
             $datos->bindParam(':attempts', $attempts);
             $datos->execute();
-        }
     }
 
 ?>
