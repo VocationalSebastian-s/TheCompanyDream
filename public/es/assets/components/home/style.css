@@ -10,7 +10,6 @@
     color: rgba(0, 0, 0, 0.6);
     font-size: 30px;
     text-align: center;
-    margin-bottom: 60px;
 }
 
 
@@ -62,16 +61,18 @@ main .sobre-nosotros {
 }
 
 .contenedor-sobre-nosotros {
-    display: flex;
-    justify-content: space-evenly;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .imagen-about-us {
-    width: 48%;
+    display: block;
+    padding-left: 150px;
 }
 
 .sobre-nosotros .contenido-textos {
-    width: 48%;
+    width: 100%;
 }
 
 .contenido-textos h3 {
