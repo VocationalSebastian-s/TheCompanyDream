@@ -12,8 +12,8 @@
     session_start();
     if (isset($_SESSION['id'])) {
         $GLOBALS['icon'] = 'success';
-        $GLOBALS['title'] = 'Éxito';
-        $GLOBALS['text'] = 'Ya has inciado sesión';
+        $GLOBALS['title'] = 'Success';
+        $GLOBALS['text'] = 'You are logged in';
         $active=false;
     }
 
@@ -40,32 +40,32 @@
                         if (password_verify($_POST['password'], $usuarios['password'])) {
                             $_SESSION['id'] = $usuarios['id']; /*Pasar datos a el sistema de seguridad*/
                             $GLOBALS['icon'] = 'success';
-                            $GLOBALS['title'] = 'Éxito';
-                            $GLOBALS['text'] = 'Se ha iniciado sesión correctamente';
+                            $GLOBALS['title'] = 'Success';
+                            $GLOBALS['text'] = 'You are successfully logged in';
                         } else {
                             $GLOBALS['icon'] = 'error';
                             $GLOBALS['title'] = 'Error';
-                            $GLOBALS['text'] = 'La contraseña es incorrecta';
+                            $GLOBALS['text'] = 'The password is incorrect';
                         }
                     } else {
                         $GLOBALS['icon'] = 'error';
                         $GLOBALS['title'] = 'Error';
-                        $GLOBALS['text'] = 'El correo no coíncide con una cuenta';
+                        $GLOBALS['text'] = 'Mail does not match an account';
                     }
                 }else {
                     $GLOBALS['icon'] = 'error';
                     $GLOBALS['title'] = 'Error';
-                    $GLOBALS['text'] = 'El correo no existe';
+                    $GLOBALS['text'] = 'Mail does not exist';
                 }
             }else{
                 $GLOBALS['icon'] = 'error';
                 $GLOBALS['title'] = 'Error';
-                $GLOBALS['text'] = 'No se pudo verificar si el correo existe';
+                $GLOBALS['text'] = 'Could not verify if the email exists';
             }
         }else{
             $GLOBALS['icon'] = 'error';
             $GLOBALS['title'] = 'Error';
-            $GLOBALS['text'] = 'Faltan datos para Iniciar sesión';
+            $GLOBALS['text'] = 'Login data is missing';
         }
     }
 
@@ -95,12 +95,12 @@
                                     } catch (Exception) {
                                         $GLOBALS['icon'] = 'error';
                                         $GLOBALS['title'] = 'Error';
-                                        $GLOBALS['text'] = 'No se pudo verificar la existencia de la cuenta';
+                                        $GLOBALS['text'] = 'The existence of the account could not be verified';
                                     }
                                 } else {
                                     $GLOBALS['icon'] = 'error';
                                     $GLOBALS['title'] = 'Error';
-                                    $GLOBALS['text'] = 'No se pudo verificar la existencia de la cuenta';
+                                    $GLOBALS['text'] = 'The existence of the account could not be verified';
                                 }
                                 if ($repeated == false) {
                                     $sql = 'INSERT INTO usuarios (id,name,lastname,direction,telephone,email,password,type,img,role,company) values (:id,:name,:lastname,:direction,:telephone,:email,:password,:type,:img,:role,:company)';
@@ -133,44 +133,44 @@
                                 
                                     if ($datos->execute()) {
                                         $GLOBALS['icon'] = 'success';
-                                        $GLOBALS['title'] = 'Éxito';
-                                        $GLOBALS['text'] = 'La cuenta ha sido creada con exito';
+                                        $GLOBALS['title'] = 'Success';
+                                        $GLOBALS['text'] = 'The account has been successfully created';
                                         signin($conexion);
                                     } else {
                                         $GLOBALS['icon'] = 'error';
                                         $GLOBALS['title'] = 'Error';
-                                        $GLOBALS['text'] = 'La cuenta no se pudo crear';
+                                        $GLOBALS['text'] = 'Account could not be created';
                                     }
                                 } elseif ($repeated == true) {
                                     $GLOBALS['icon'] = 'error';
                                     $GLOBALS['title'] = 'Error';
-                                    $GLOBALS['text'] = 'El correo ' . $_POST['email'] . ' ya existe';
+                                    $GLOBALS['text'] = 'the mail ' . $_POST['email'] . ' already exists';
                                 }
                             }else{
                                 $GLOBALS['icon'] = 'error';
                                 $GLOBALS['title'] = 'Error';
-                                $GLOBALS['text'] = 'El tipo de Usuario no es correcto';
+                                $GLOBALS['text'] = 'User type is not correct';
                             }
                         }else{
                             $GLOBALS['icon'] = 'error';
                             $GLOBALS['title'] = 'Error';
-                            $GLOBALS['html'] = "<p class='terms'>Debes Aceptar los <a target='blank' href='../assets/docs/Terms_and_Conditions.pdf'>terminos y condiciones</a> de la politica de proteccion de datos. Recibiras confirmacion del registro por correo electronico</p>";
+                            $GLOBALS['html'] = "<p class='terms'>You must accept the <a target='blank' href='../assets/docs/Terms_and_Conditions.pdf'>terminos y condiciones</a> terms and conditions of the data protection policy. You will receive confirmation of your registration by email.</p>";
                         }
                     }
                 }else{
                     $GLOBALS['icon'] = 'error';
                     $GLOBALS['title'] = 'Error';
-                    $GLOBALS['text'] = 'Las contraseñas no coinciden';
+                    $GLOBALS['text'] = 'Passwords do not match';
                 }
             }else{
                 $GLOBALS['title'] = 'Error';
-                $GLOBALS['text'] = 'El correo no cumple con los parametros necesarios';
+                $GLOBALS['text'] = 'The mail does not meet the required parameters';
                 $GLOBALS['img'] = '../assets/components/login/src/images/estructuraemail.jpg';
             }
         }else{
             $GLOBALS['icon'] = 'error';
             $GLOBALS['title'] = 'Error';
-            $GLOBALS['text'] = 'Faltan datos para Registrarse';
+            $GLOBALS['text'] = 'Missing data to sign up';
         }
     }
     
@@ -216,31 +216,31 @@
                         }else{
                             $GLOBALS['icon'] = 'error';
                             $GLOBALS['title'] = 'Error';
-                            $GLOBALS['text'] = 'La contraseña debe tener al menos un caracter especial';
+                            $GLOBALS['text'] = 'The password must have at least one special character';
                             return false;
                         }
                     }else{
                         $GLOBALS['icon'] = 'error';
                         $GLOBALS['title'] = 'Error';
-                        $GLOBALS['text'] = 'La contraseña debe tener al menos una minuscula';
+                        $GLOBALS['text'] = 'The password must have at least one lower case letter.';
                         return false;
                     }
                 }else{
                     $GLOBALS['icon'] = 'error';
                     $GLOBALS['title'] = 'Error';
-                    $GLOBALS['text'] = 'La contraseña debe tener al menos una mayuscula';
+                    $GLOBALS['text'] = 'The password must have at least one capital letter.';
                     return false;
                 }
             }else{
                 $GLOBALS['icon'] = 'error';
                 $GLOBALS['title'] = 'Error';
-                $GLOBALS['text'] = 'La contraseña debe tener al menos un numero';
+                $GLOBALS['text'] = 'The password must have at least one number';
                 return false;
             }
         }else{
             $GLOBALS['icon'] = 'error';
             $GLOBALS['title'] = 'Error';
-            $GLOBALS['text'] = 'La contraseña debe ser minimo de 8 caracteres';
+            $GLOBALS['text'] = 'Password must be a minimum of 8 characters';
             return false;
         }
     }
@@ -271,7 +271,7 @@
                     timerProgressBar:"True",
                     allowOutsideClick:"True",
                     allowEscapeKey:"True",
-                    confirmButtonText:"Aceptar",
+                    confirmButtonText:"Accept",
                     confirmButtonColor:"#1A5276",
                 });
             </script>

@@ -13,7 +13,7 @@ function habilitarIn() {
     if (verifyEmailIn() && verifyPasswordIn()) {
         btnIn.disabled = false;
         btnIn.classList.remove('disabled');
-        hoveralert("success", "Parametros Correctos");
+        hoveralert("success", "Correct Parameters");
     } else {
         btnIn.disabled = true;
         btnIn.classList.add('disabled');
@@ -26,7 +26,7 @@ function verifyEmailIn() {
         iconalert("emailIn", "success");
         return true;
     } else {
-        hoveralert("error", "Correo Vacío");
+        hoveralert("error", "Empty mail");
         iconalert("emailIn", "error");
         return false;
     }
@@ -38,7 +38,7 @@ function verifyPasswordIn() {
         iconalert("passwordIn", "success");
         return true;
     } else {
-        hoveralert("error", "Contraseña Vacía");
+        hoveralert("error", "Empty password");
         iconalert("passwordIn", "error");
         return false;
     }
@@ -49,7 +49,7 @@ function habilitarUp() {
     if (verifyEmailUp() && verifyPasswordUp() && verifyNameUp()) {
         btnUp.disabled = false;
         btnUp.classList.remove('disabled');
-        hoveralert("success", "Parametros Correctos");
+        hoveralert("success", "Correct Parameters");
     } else {
         btnUp.disabled = true;
         btnUp.classList.add('disabled');
@@ -61,11 +61,11 @@ function verifyNameUp() {
     if (nameUp != "") {
         nameUp = nameUp.split(" ");
         if (nameUp.length == 1) {
-            hoveralert("error", "No hay apellidos");
+            hoveralert("error", "There's no last names");
             iconalert("nameUp", "warning");
             return true;
         } else if (nameUp.length == 2) {
-            hoveralert("error", "No hay segundo apellido");
+            hoveralert("error", "There's no second last name");
             iconalert("nameUp", "warning");
             return true;
         } else if (nameUp.length == 3) {
@@ -75,12 +75,12 @@ function verifyNameUp() {
             iconalert("nameUp", "success");
             return true;
         } else if (nameUp.length > 4) {
-            hoveralert("error", "Nombre muy extenso");
+            hoveralert("error", "Very long name");
             iconalert("nameUp", "error");
             return false;
         }
     } else {
-        hoveralert("error", "Nombre Vacío");
+        hoveralert("error", "Empty name");
         iconalert("nameUp", "error");
         return false;
     }
@@ -94,12 +94,12 @@ function verifyEmailUp() {
             iconalert("emailUp", "success");
             return true;
         } else {
-            hoveralert("error", "El correo no es correcto");
+            hoveralert("error", "The email is not correct");
             iconalert("emailUp", "error");
             return false;
         }
     } else {
-        hoveralert("error", "El correo esta vacío");
+        hoveralert("error", "Mail is empty");
         iconalert("emailUp", "error");
         return false;
     }
@@ -115,42 +115,42 @@ function verifyPasswordUp() {
                 if (/[A-Z]/.test(passwordUp)) {
                     if (/[a-z]/.test(passwordUp)) {
                         if (/[\W]/.test(passwordUp)) {
-                            hoveralert("success", "Parametros Correctos");
+                            hoveralert("success", "Correct Parameters");
                             iconalert("passwordUp", "success");
                             iconalert("passwordcheckUp", "success");
                             return true;
                         } else {
-                            hoveralert("error", "La contraseña debe tener mínimo un caracter especial");
+                            hoveralert("error", "The password must have at least one special character");
                             iconalert("passwordUp", "error");
                             iconalert("passwordcheckUp", "error");
                             return false;
                         }
                     } else {
-                        hoveralert("error", "La contraseña debe tener mínimo una minúscula");
+                        hoveralert("error", "The password must have at least one lower case letter");
                         iconalert("passwordUp", "error");
                         iconalert("passwordcheckUp", "error");
                         return false;
                     }
                 } else {
-                    hoveralert("error", "La contraseña debe tener mínimo una mayúscula");
+                    hoveralert("error", "The password must have at least one capital letter");
                     iconalert("passwordUp", "error");
                     iconalert("passwordcheckUp", "error");
                     return false;
                 }
             } else {
-                hoveralert("error", "La contraseña debe tener mínimo un numero");
+                hoveralert("error", "The password must have at least one number");
                 iconalert("passwordUp", "error");
                 iconalert("passwordcheckUp", "error");
                 return false;
             }
         } else {
-            hoveralert("error", "Las contraseñas no coinciden");
+            hoveralert("error", "Passwords do not match");
             iconalert("passwordUp", "error");
             iconalert("passwordcheckUp", "error");
             return false;
         }
     } else {
-        hoveralert("error", "La contraseñas debe tener mínimo 8 caracteres");
+        hoveralert("error", "Passwords must be at least 8 characters long");
         iconalert("passwordUp", "error");
         iconalert("passwordcheckUp", "error");
         return false;
