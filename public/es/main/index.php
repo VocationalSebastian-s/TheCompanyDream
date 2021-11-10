@@ -25,6 +25,20 @@
 
 		<!--google material icon-->
 		<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+		<script>
+			function nomina(){
+				const { value: email } = await Swal.fire({
+				title: 'Input email address',
+				input: 'email',
+				inputLabel: 'Your email address',
+				inputPlaceholder: 'Enter your email address'
+				})
+
+				if (email) {
+				Swal.fire(`Entered email: ${email}`)
+				}
+			}
+		</script>
 	</head>
 	<body>
 		<?php include('../assets/components/main/index.html') ?>

@@ -80,7 +80,7 @@
 
     function signup($conexion)
     {
-        if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordcheck']) && !empty($_POST['type'])) {
+        if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordcheck'])) {
             if (verifyemail($_POST['email'])==1) {
                 if ($_POST['password'] == $_POST['passwordcheck']) {
                     if (verifypassword($_POST['password'])==1) {
