@@ -1,5 +1,5 @@
 <?php
-    require '../../../server/connection/conexion.php';
+    
     
     /*Sweet Alert -> Parametros */
     $title='';
