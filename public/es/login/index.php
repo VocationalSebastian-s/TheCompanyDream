@@ -1,5 +1,5 @@
 <?php
-    require '../../../server/connection/conexion.php';
+    include '../../../server/connection/conexion.php';
     date_default_timezone_set("America/Bogota");
     
     /*Sweet Alert -> Parametros */
